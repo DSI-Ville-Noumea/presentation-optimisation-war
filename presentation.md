@@ -449,3 +449,16 @@ SIRH              1     300     33
 * Certains ont une méthode personnelle de déployer, plus efficace
 * Certains notent pas le temps redmine de la même manière
 
+--
+
+### Premières actions
+
+Avant de changer quoi que ce soit au protocle actuel, nous avons besoin d'une
+granularité plus fine sur la distribution du temps passé au sein d'un
+déploiement, sur un projet fixé et qui servira d'étalon.
+
+* Récup/download d'un war
+* Temps (complet) de copie vers le tomcat
+* Test reverse proxy
+* Test appli up
+* (Suppression de l'ancien war)
