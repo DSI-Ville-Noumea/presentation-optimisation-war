@@ -8,7 +8,7 @@ theme: sudodoki/reveal-cleaver-theme
 
 Démploiements de WAR (only)
 
-##le choc de simplification
+## Le choc de simplification
 
 
 --
@@ -296,26 +296,26 @@ order by application desc, count(*) desc</code></pre>
 
 <pre>
 application	aggreg_time	count
-SIRH-WS          2               64
-SIRH-WS	         1	52
-SIRH-PTG-WS	2	52
-SIRH-PTG-WS	1	21
-SIRH-KIOSQUE-J2EE	2	53
-SIRH-KIOSQUE-J2EE	1	25
-SIRH-JOBS	2	17
-SIRH-EAE-WS	1	35
-SIRH-EAE-WS	2	20
-SIRH-ABS-WS	2	31
-SIRH-ABS-WS	1	12
-SIRH	2	61
-SIRH	1	27
-SEAT	1	16
-SEAT	2	14
-Organigramme	2	17
-Missions SIALE	1	15
-Annuaire	1	11
-ADVERAD	1	12
-Actes Etat Cicil	1	12
+SIRH-WS           2               64
+SIRH-WS           1               52
+SIRH-PTG-WS       2               52
+SIRH-PTG-WS       1               21
+SIRH-KIOSQUE-J2EE 2               53
+SIRH-KIOSQUE-J2EE 1               25
+SIRH-JOBS         2               17
+SIRH-EAE-WS       1               35
+SIRH-EAE-WS       2               20
+SIRH-ABS-WS       2               31
+SIRH-ABS-WS       1               12
+SIRH              2               61
+SIRH              1               27
+SEAT              1               16
+SEAT              2               14
+Organigramme      2               17
+Missions SIALE    1               15
+Annuaire          1               11
+ADVERAD           1               12
+Actes Etat Cicil  1               12
 </pre>
 
 --
@@ -345,7 +345,7 @@ Actes Etat Cicil    0      12
 
 <pre>
 application	nb2	nb1
-SI.RH           298	172
+SI.RH           298     172
 SEAT             14      16
 Organigramme     17       0
 Missions SIALE    0      15
@@ -404,14 +404,14 @@ SIRH                    1    180
 ### Pivoté et aggrégé
 
 <pre>
-project_family	nb1	nb2	nb3
-Actes Etat Cicil	12	0	0
-ADVERAD	12	0	0
-Annuaire	11	0	0
-Missions SIALE	15	0	0
-Organigramme	0	17	0
-SEAT	16	14	0
-SIRH	1	300	33
+project_family   nb1    nb2     nb3
+Actes Etat Cicil 12     0       0
+ADVERAD          12     0       0
+Annuaire         11     0       0
+Missions SIALE   15     0       0
+Organigramme      0     17      0
+SEAT             16     14      0
+SIRH              1     300     33
 </pre>
 
 --
