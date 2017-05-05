@@ -1781,12 +1781,12 @@ based on dark.css by Ivan Sagalaev
     <div class="slides">
         <section>
     <p>Démploiements de WAR (only)</p>
-<h2 id="le-choc-de-simplification">le choc de simplification</h2>
+<h2 id="le-choc-de-simplification">Le choc de simplification</h2>
 
   </section>
   <section>
     <h3 id="philosophie-de-fond-lean-">Philosophie de fond (LEAN)</h3>
-<p>Sera omniprésent le souci, à chaque étape de ce chantier collaboratif, proposer
+<p>Sera omniprésent le souci, à chaque itération de ce chantier collaboratif, proposer
 des sources d&#39;amélioration continue, opérationelles et simples à mettre en oeuvre
 et dont les bénéfices seront mesurables.</p>
 
@@ -1802,7 +1802,7 @@ et dont les bénéfices seront mesurables.</p>
     <h3 id="objectifs-protocole-de-d-ploiement">Objectifs : Protocole de déploiement</h3>
 <ul>
 <li>Garantir la compréhension, l&#39;uniformité et le respect du protocole</li>
-<li>Référencer simplement au sein de documents partagés et versionés les pratiques de chacun</li>
+<li>Référencer simplement au sein de documents partagés et versionés une pratique commune</li>
 <li>Identifier les sources de simplification, exemples de déploiements à l&#39;appui</li>
 <li>Faire le point sur l&#39;existant : performance de ce processus</li>
 </ul>
@@ -1850,7 +1850,7 @@ et dont les bénéfices seront mesurables.</p>
   <section>
     <h3 id="pr-requis">Prérequis</h3>
 <p>Afin que ces actions soient menées efficacement et que les bénéfices
-persistent dans le temps, j&#39;ai besoin de :</p>
+persistent dans le temps, besoin de :</p>
 <ul>
 <li>disponibilité (négociée) des acteurs</li>
 <li>légitimité des leaders/référents</li>
@@ -1866,6 +1866,9 @@ persistent dans le temps, j&#39;ai besoin de :</p>
 <li>Leader du projet dans son ensemble</li>
 <li>Visu et partage de la trajectoire dans son ensemble</li>
 <li>Insuffler la philosophie DevOps (organisation, outils)</li>
+<li>Challenger les parties prenantes sur une montée en compétences
+progressive, qui sera valorisée en continu</li>
+<li>Animer l&#39;équipe</li>
 </ul>
 
   </section>
@@ -1873,7 +1876,7 @@ persistent dans le temps, j&#39;ai besoin de :</p>
     <h3 id="pr-requis-r-les-r-f-rent-infra">Prérequis : Rôles : Référent Infra</h3>
 <p>(Thibaut ?)</p>
 <ul>
-<li>Responsabilité de veiller à la bonne applicatin des procédures mises en place en commun</li>
+<li>Responsabilité de veiller à la bonne application des procédures mises en place en commun</li>
 <li>Légtimité en cas de non application des procédures développées</li>
 <li>Leader infra sur ce sujet</li>
 </ul>
@@ -1891,16 +1894,26 @@ persistent dans le temps, j&#39;ai besoin de :</p>
 
   </section>
   <section>
-    <h2 id="code-de-conduite">Code de conduite</h2>
+    <h3 id="code-de-conduite-1-2">Code de conduite 1/2</h3>
 <ul>
-<li>On comprend ce qu&#39;on fait et pourquoi</li>
+<li>Nécessité absolue de toujours comprendre et maîtriser ce que l&#39;on fait et pourquoi</li>
 <li>Utiliser les logiciels au mieux et pour quoi ils ont été conçus</li>
 <li>On le clique pas : on scripte ! toujours, pour tout ! (pas de oui mais ;-p)</li>
-<li>On versionne</li>
+<li>On travaille sous linux (on ne &quot;rebondit&quot; pas sur Windows)</li>
+<li>On utilise les outils adaptés (curl, wget, outils cli, scripts)</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="code-de-conduite-2-2">Code de conduite 2/2</h3>
+<ul>
+<li>On versionne, tout, toujours, tout le temps</li>
+<li>Faire les choses en continu doit être une obsession</li>
 <li>On ne fait pas de mail</li>
 <li>Quand on argumente c&#39;est à l&#39;aide de chiffres calculés de manière
-transparente (possibilité de créer des dashboard avec ces indicateurs)</li>
-<li>On utilise les outils adaptés</li>
+transparente (possibilité de créer des dashboard avec ces indicateurs)
+réutilisables par la suite</li>
+<li>&quot;Pair deploying Dev&amp;Ops&quot; : on bouge physiquement bouger au cours de sessions devOps pour partager un même espace de travail</li>
 </ul>
 
   </section>
@@ -1912,6 +1925,11 @@ slides précédents et que :</p>
 <li>le leader a légitimité</li>
 <li>le référent infra a légitimité</li>
 </ul>
+<p>Sans cela, le chantier s&#39;arrête là.</p>
+
+  </section>
+  <section>
+    <p><img src="img/start.gif"/></p>
 
   </section>
   <section>
@@ -1967,6 +1985,25 @@ update deploy_war_only
 update deploy_war_only
     set project_family = 'SIRH'
     where application like 'SIRH%';</code></pre>
+  </section>
+  <section>
+    <h3 id="premiers-retours-sur-la-constituion-des-datas">Premiers retours sur la constituion des datas</h3>
+<ul>
+<li>Long à mettre en oeuvre</li>
+<li>ne se met pas à jour en continu</li>
+<li>N&#39;a jamais été produit sous cette forme</li>
+<li>Très enrichissant et saisissant</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="pistes-d-am-lioration-continue">Pistes d&#39;amélioration continue</h3>
+<ul>
+<li>Création d&#39;un univers BI pointant sur Redmine permettant de produire et de
+suivre ces métriques en continu</li>
+<li>Possibilité de poser des baselines</li>
+</ul>
+
   </section>
   <section>
     <h3 id="les-plus-gros-d-ployeurs">Les plus gros déployeurs</h3>
@@ -2040,26 +2077,26 @@ order by application desc, count(*) desc</code></pre>
   <section>
     <pre>
 application    aggreg_time    count
-SIRH-WS          2               64
-SIRH-WS             1    52
-SIRH-PTG-WS    2    52
-SIRH-PTG-WS    1    21
-SIRH-KIOSQUE-J2EE    2    53
-SIRH-KIOSQUE-J2EE    1    25
-SIRH-JOBS    2    17
-SIRH-EAE-WS    1    35
-SIRH-EAE-WS    2    20
-SIRH-ABS-WS    2    31
-SIRH-ABS-WS    1    12
-SIRH    2    61
-SIRH    1    27
-SEAT    1    16
-SEAT    2    14
-Organigramme    2    17
-Missions SIALE    1    15
-Annuaire    1    11
-ADVERAD    1    12
-Actes Etat Cicil    1    12
+SIRH-WS           2               64
+SIRH-WS           1               52
+SIRH-PTG-WS       2               52
+SIRH-PTG-WS       1               21
+SIRH-KIOSQUE-J2EE 2               53
+SIRH-KIOSQUE-J2EE 1               25
+SIRH-JOBS         2               17
+SIRH-EAE-WS       1               35
+SIRH-EAE-WS       2               20
+SIRH-ABS-WS       2               31
+SIRH-ABS-WS       1               12
+SIRH              2               61
+SIRH              1               27
+SEAT              1               16
+SEAT              2               14
+Organigramme      2               17
+Missions SIALE    1               15
+Annuaire          1               11
+ADVERAD           1               12
+Actes Etat Cicil  1               12
 </pre>
   </section>
   <section>
@@ -2085,7 +2122,7 @@ Actes Etat Cicil    0      12
     <h3 id="sirh-aggr-g-">SIRH aggrégé</h3>
 <pre>
 application    nb2    nb1
-SI.RH           298    172
+SI.RH           298     172
 SEAT             14      16
 Organigramme     17       0
 Missions SIALE    0      15
@@ -2138,14 +2175,14 @@ SIRH                    1    180
   <section>
     <h3 id="pivot-et-aggr-g-">Pivoté et aggrégé</h3>
 <pre>
-project_family    nb1    nb2    nb3
-Actes Etat Cicil    12    0    0
-ADVERAD    12    0    0
-Annuaire    11    0    0
-Missions SIALE    15    0    0
-Organigramme    0    17    0
-SEAT    16    14    0
-SIRH    1    300    33
+project_family   nb1    nb2     nb3
+Actes Etat Cicil 12     0       0
+ADVERAD          12     0       0
+Annuaire         11     0       0
+Missions SIALE   15     0       0
+Organigramme      0     17      0
+SEAT             16     14      0
+SIRH              1     300     33
 </pre>
   </section>
   <section>
@@ -2181,6 +2218,46 @@ SIRH    1    300    33
 <li>Certains ont une méthode personnelle de déployer, plus efficace</li>
 <li>Certains notent pas le temps redmine de la même manière</li>
 </ul>
+
+  </section>
+  <section>
+    <h3 id="premi-res-actions">Premières actions</h3>
+<p>Avant de changer quoi que ce soit au protocle actuel, nous avons besoin d&#39;une
+granularité plus fine sur la distribution du temps passé au sein d&#39;un
+déploiement, sur un projet fixé et qui servira d&#39;étalon.</p>
+<ul>
+<li>Récup/download d&#39;un war</li>
+<li>Temps (complet) de copie vers le tomcat</li>
+<li>Test reverse proxy</li>
+<li>Test appli up</li>
+<li>(Suppression de l&#39;ancien war)</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="application-war-talon">Application war étalon</h3>
+<p>Commencer par une appli simple (pas SI.RH) : Appock ?</p>
+
+  </section>
+  <section>
+    <h3 id="production-d-un-profil-type-de-d-ploiement-ex-appock">Production d&#39;un profil type de déploiement (ex : appock</h3>
+<p>Exemples de chiffres :</p>
+<pre>
+Actions                   Temps (minutes)
+Download du war           8
+Upload du war tu Tomcat   2
+Test(s) reverse proxy     2
+Test Appli Up             3
+Suppression ancien war    5
+</pre>
+  </section>
+  <section>
+    <h3 id="profil-type">Profil type</h3>
+<p><img src="img/exemple_profil_temps_deploiement_war.png"/></p>
+
+  </section>
+  <section>
+    <p><img src="img/lol-put-a-few-select-frames-on-a-loop-haha.gif"/></p>
 
   </section>
   <section>

@@ -15,7 +15,7 @@ Démploiements de WAR (only)
 
 ### Philosophie de fond (LEAN)
 
-Sera omniprésent le souci, à chaque étape de ce chantier collaboratif, proposer
+Sera omniprésent le souci, à chaque itération de ce chantier collaboratif, proposer
 des sources d'amélioration continue, opérationelles et simples à mettre en oeuvre
 et dont les bénéfices seront mesurables.
 
@@ -31,7 +31,7 @@ et dont les bénéfices seront mesurables.
 ### Objectifs : Protocole de déploiement
 
 * Garantir la compréhension, l'uniformité et le respect du protocole
-* Référencer simplement au sein de documents partagés et versionés les pratiques de chacun
+* Référencer simplement au sein de documents partagés et versionés une pratique commune
 * Identifier les sources de simplification, exemples de déploiements à l'appui
 * Faire le point sur l'existant : performance de ce processus
 
@@ -79,7 +79,7 @@ et dont les bénéfices seront mesurables.
 
 
 Afin que ces actions soient menées efficacement et que les bénéfices
-persistent dans le temps, j'ai besoin de :
+persistent dans le temps, besoin de :
 
 * disponibilité (négociée) des acteurs
 * légitimité des leaders/référents
@@ -98,6 +98,9 @@ Adrien
 * Leader du projet dans son ensemble
 * Visu et partage de la trajectoire dans son ensemble
 * Insuffler la philosophie DevOps (organisation, outils)
+* Challenger les parties prenantes sur une montée en compétences
+progressive, qui sera valorisée en continu
+* Animer l'équipe
 
 
 --
@@ -106,7 +109,7 @@ Adrien
 
 (Thibaut ?)
 
-* Responsabilité de veiller à la bonne applicatin des procédures mises en place en commun
+* Responsabilité de veiller à la bonne application des procédures mises en place en commun
 * Légtimité en cas de non application des procédures développées
 * Leader infra sur ce sujet
 
@@ -123,17 +126,26 @@ Adrien
 
 --
 
-## Code de conduite
+### Code de conduite 1/2
 
-* On comprend ce qu'on fait et pourquoi
+* Nécessité absolue de toujours comprendre et maîtriser ce que l'on fait et pourquoi
 * Utiliser les logiciels au mieux et pour quoi ils ont été conçus
 * On le clique pas : on scripte ! toujours, pour tout ! (pas de oui mais ;-p)
-* On versionne
+* On travaille sous linux (on ne "rebondit" pas sur Windows)
+* On utilise les outils adaptés (curl, wget, outils cli, scripts)
+
+
+--
+
+### Code de conduite 2/2
+
+* On versionne, tout, toujours, tout le temps
+* Faire les choses en continu doit être une obsession
 * On ne fait pas de mail
 * Quand on argumente c'est à l'aide de chiffres calculés de manière
 transparente (possibilité de créer des dashboard avec ces indicateurs)
-* On utilise les outils adaptés
-
+réutilisables par la suite
+* "Pair deploying Dev&Ops" : on bouge physiquement bouger au cours de sessions devOps pour partager un même espace de travail
 
 
 --
@@ -145,6 +157,11 @@ slides précédents et que :
 
 * le leader a légitimité
 * le référent infra a légitimité
+
+Sans cela, le chantier s'arrête là.
+--
+
+<img src="img/start.gif"/>
 
 --
 
@@ -212,6 +229,24 @@ update deploy_war_only
 update deploy_war_only
     set project_family = 'SIRH'
     where application like 'SIRH%';</code></pre>
+
+--
+
+### Premiers retours sur la constituion des datas
+
+* Long à mettre en oeuvre
+* ne se met pas à jour en continu
+* N'a jamais été produit sous cette forme
+* Très enrichissant et saisissant
+
+--
+
+### Pistes d'amélioration continue
+
+* Création d'un univers BI pointant sur Redmine permettant de produire et de
+suivre ces métriques en continu
+* Possibilité de poser des baselines
+
 
 --
 
@@ -462,3 +497,36 @@ déploiement, sur un projet fixé et qui servira d'étalon.
 * Test reverse proxy
 * Test appli up
 * (Suppression de l'ancien war)
+
+--
+
+### Application war étalon
+
+Commencer par une appli simple (pas SI.RH) : Appock ?
+
+
+--
+
+### Production d'un profil type de déploiement (ex : appock
+
+Exemples de chiffres :
+
+<pre>
+Actions                   Temps (minutes)
+Download du war           8
+Upload du war tu Tomcat   2
+Test(s) reverse proxy     2
+Test Appli Up             3
+Suppression ancien war    5
+</pre>
+
+--
+
+### Profil type
+
+<img src="img/exemple_profil_temps_deploiement_war.png"/>
+
+--
+
+<img src="img/lol-put-a-few-select-frames-on-a-loop-haha.gif"/>
+
