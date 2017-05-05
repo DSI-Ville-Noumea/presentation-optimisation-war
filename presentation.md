@@ -528,5 +528,5 @@ Suppression ancien war    5
 
 --
 
-<img src="img/lol-put-a-few-select-frames-on-a-loop-haha.gif"/>
+<img src="img/squad.gif"/>
 
