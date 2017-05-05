@@ -1787,16 +1787,19 @@ based on dark.css by Ivan Sagalaev
   </section>
   <section>
     <h3 id="philosophie-de-fond-lean-">Philosophie de fond (LEAN)</h3>
-<p>Sera omniprésent le souci, à chaque itération de ce chantier collaboratif, proposer
-des sources d&#39;amélioration continue, opérationelles et simples à mettre en oeuvre
-et dont les bénéfices seront mesurables.</p>
+<p>Sera omniprésent le souci, à chaque itération de :</p>
+<ul>
+<li>Proposer des sources d&#39;amélioration continue, opérationelles</li>
+<li>De les mettre en oeuvre</li>
+<li>D&#39;en mesurer les effets</li>
+</ul>
 
   </section>
   <section>
-    <h3 id="glossaire">Glossaire</h3>
-<ul>
-<li>KPI : Key Performance Indicator</li>
-</ul>
+    <h3 id="kpi">KPI</h3>
+<p><i>&quot;A Key Performance Indicator is a measurable value that demonstrates how effectively
+a company is achieving key business objectives. Organizations use KPIs at
+multiple levels to evaluate their success at reaching targets.&quot;</i></p>
 
   </section>
   <section>
@@ -1816,6 +1819,7 @@ et dont les bénéfices seront mesurables.</p>
 <li>Facilement documentable</li>
 <li>Très bon point de départ pour comprendre le fonctionnement d&#39;un Tomcat</li>
 <li>Gros potentiel d&#39;optimisation à moindres frais</li>
+<li>Ouvre la porte vers les pratiques DevOps</li>
 </ul>
 
   </section>
@@ -1825,7 +1829,7 @@ et dont les bénéfices seront mesurables.</p>
 <li>Construction des KPI : détail et complexité de la construction</li>
 <li>Pose des KPI</li>
 <li>Analyse des KPI</li>
-<li>Amélioration de la production de ces KPI (facilité, précision, transparnce, opprtunités, ...)</li>
+<li>Amélioration de la production de ces KPI (facilité, précision, transparence, opportunités, ...)</li>
 </ul>
 
   </section>
@@ -1842,7 +1846,7 @@ et dont les bénéfices seront mesurables.</p>
   <section>
     <h3 id="constat-actuel">Constat actuel</h3>
 <ul>
-<li>Les procédures ne sont pas partagés au sein du SIE-Infra : différences entres agents</li>
+<li>Les procédures de déploiement sont pas partagées</li>
 <li>La méthode de déploiements se base sur des tickets passés et non sur une méthode centralisée</li>
 <li>Le processus n&#39;est pas forcément compris dans son ensemble par tous (fonctionnement d&#39;un Tomcat, et du cluster)</li>
 </ul>
@@ -1868,7 +1872,7 @@ persistent dans le temps, besoin de :</p>
 <li>Visu et partage de la trajectoire dans son ensemble</li>
 <li>Insuffler la philosophie DevOps (organisation, outils)</li>
 <li>Challenger les parties prenantes sur une montée en compétences
-progressive, qui sera valorisée en continu</li>
+progressive, valorisée en continu</li>
 <li>Animer l&#39;équipe</li>
 </ul>
 
@@ -1878,19 +1882,19 @@ progressive, qui sera valorisée en continu</li>
 <p>(Thibaut ?)</p>
 <ul>
 <li>Responsabilité de veiller à la bonne application des procédures mises en place en commun</li>
-<li>Légtimité en cas de non application des procédures développées</li>
+<li>Légitimité en cas de non application des procédures développées</li>
 <li>Leader infra sur ce sujet</li>
 </ul>
 
   </section>
   <section>
-    <h2 id="equipe">Equipe</h2>
+    <h2 id="pr-requis-r-les-equipe">Prérequis : Rôles : Equipe</h2>
 <ul>
 <li>Devs et Ops : pas de distingo presta/agent mairie</li>
 <li>Respect strict des procédures développées ensembles</li>
 <li>Ouverture d&#39;esprit sur l&#39;innovation</li>
 <li>Nécessité et volonté de comprendre ce qui est fait et pourquoi</li>
-<li>Reconnaissance du Leader projet et référent infra</li>
+<li>Reconnaissance du leader projet et référent infra</li>
 </ul>
 
   </section>
@@ -1899,9 +1903,9 @@ progressive, qui sera valorisée en continu</li>
 <ul>
 <li>Nécessité absolue de toujours comprendre et maîtriser ce que l&#39;on fait et pourquoi</li>
 <li>Utiliser les logiciels au mieux et pour quoi ils ont été conçus</li>
-<li>On le clique pas : on scripte ! toujours, pour tout ! (pas de oui mais ;-p)</li>
+<li>On ne clique pas : on scripte ! toujours, pour tout ! (pas de &quot;oui mais&quot;)</li>
 <li>On travaille sous linux (on ne &quot;rebondit&quot; pas sur Windows)</li>
-<li>On utilise les outils adaptés (curl, wget, outils cli, scripts)</li>
+<li>On utilise les outils adaptés (shell particulier, curl, wget, outils cli, scripts)</li>
 </ul>
 
   </section>
@@ -1914,7 +1918,7 @@ progressive, qui sera valorisée en continu</li>
 <li>Quand on argumente c&#39;est à l&#39;aide de chiffres calculés de manière
 transparente (possibilité de créer des dashboard avec ces indicateurs)
 réutilisables par la suite</li>
-<li>&quot;Pair deploying Dev&amp;Ops&quot; : on bouge physiquement bouger au cours de sessions devOps pour partager un même espace de travail</li>
+<li>&quot;Pair deploying Dev&amp;Ops&quot; : on bouge physiquement au cours de sessions devOps pour partager un même espace/environnement de travail</li>
 </ul>
 
   </section>
@@ -1935,11 +1939,9 @@ slides précédents et que :</p>
   </section>
   <section>
     <h3 id="construction-des-datas">Construction des datas</h3>
-<p>Création d&#39;une table (psql) de load</p>
-<pre><code>select assignee, aggreg_time, count(*)
-from deploy_war_only
-group by assignee, aggreg_time
-CREATE TABLE public.deploy_war_only  ( 
+<p>Création d&#39;une table (psql) de load afin de produire les indicateurs.</p>
+<pre><code>
+CREATE TABLE deploy_war_only  ( 
     id             int4 NULL,
     prio           varchar NULL,
     assignee       varchar NULL,
@@ -1988,10 +1990,10 @@ update deploy_war_only
     where application like 'SIRH%';</code></pre>
   </section>
   <section>
-    <h3 id="premiers-retours-sur-la-constituion-des-datas">Premiers retours sur la constituion des datas</h3>
+    <h3 id="premiers-retours-sur-la-constitution-des-datas">Premiers retours sur la constitution des datas</h3>
 <ul>
 <li>Long à mettre en oeuvre</li>
-<li>ne se met pas à jour en continu</li>
+<li>Ne se met pas à jour en continu</li>
 <li>N&#39;a jamais été produit sous cette forme</li>
 <li>Très enrichissant et saisissant</li>
 </ul>
@@ -2062,8 +2064,7 @@ aggreg_time count
   <section>
     <h2 id="objectif-de-la-mission">Objectif de la mission</h2>
 <p>Basculer les deploiements de 30&#39; en 15&#39;, on passe d&#39;un volume d&#39;heures de
-306 à 193, soit un facteur 1.6. A priori au vu des distribs cet objectifs
-est atteignable.</p>
+306 h à 193 h, soit un facteur 1.6.</p>
 
   </section>
   <section>
@@ -2149,9 +2150,6 @@ Actes Etat Cicil  0      12
 
   </section>
   <section>
-    
-  </section>
-  <section>
     <h2 id="par-groupe-de-projet">Par groupe de projet</h2>
 <pre><code>select project_family, aggreg_time, count(*)
 from deploy_war_only
@@ -2161,6 +2159,7 @@ order by project_family, aggreg_time desc, count(*) desc</code></pre>
   </section>
   <section>
     <pre>
+project _family         aggreg_time nb
 Actes Etat Cicil        1    12
 ADVERAD                 1    12
 Annuaire                1    11
