@@ -6,9 +6,11 @@ controls: true
 theme: sudodoki/reveal-cleaver-theme
 --
 
-Démploiements de WAR (only)
+ Déploiements de WAR (only)
 
-## Le choc de simplification
+<img src="img/cover.jpg"/>
+
+ Le choc de simplification
 
 
 --
