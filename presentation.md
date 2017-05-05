@@ -10,7 +10,7 @@ theme: sudodoki/reveal-cleaver-theme
 
 <img src="img/cover.jpg"/>
 
- Le choc de simplification
+ Le choc de simplification.
 
 
 --
