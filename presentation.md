@@ -17,18 +17,23 @@ theme: sudodoki/reveal-cleaver-theme
 
 ### Philosophie de fond (LEAN)
 
-Sera omniprésent le souci, à chaque itération de ce chantier collaboratif, proposer
-des sources d'amélioration continue, opérationelles et simples à mettre en oeuvre
-et dont les bénéfices seront mesurables.
+Sera omniprésent le souci, à chaque itération de :
 
---
-
-### Glossaire
-
-* KPI : Key Performance Indicator
+* Proposer des sources d'amélioration continue, opérationelles
+* De les mettre en oeuvre
+* D'en mesurer les effets
 
 
 --
+
+### KPI
+
+<i>"A Key Performance Indicator is a measurable value that demonstrates how effectively
+a company is achieving key business objectives. Organizations use KPIs at
+multiple levels to evaluate their success at reaching targets."</i>
+
+--
+
 
 ### Objectifs : Protocole de déploiement
 
@@ -46,6 +51,7 @@ et dont les bénéfices seront mesurables.
 * Facilement documentable
 * Très bon point de départ pour comprendre le fonctionnement d'un Tomcat
 * Gros potentiel d'optimisation à moindres frais
+* Ouvre la porte vers les pratiques DevOps
 
 --
 
@@ -54,7 +60,7 @@ et dont les bénéfices seront mesurables.
 * Construction des KPI : détail et complexité de la construction
 * Pose des KPI
 * Analyse des KPI
-* Amélioration de la production de ces KPI (facilité, précision, transparnce, opprtunités, ...)
+* Amélioration de la production de ces KPI (facilité, précision, transparence, opportunités, ...)
 
 --
 
@@ -71,7 +77,7 @@ et dont les bénéfices seront mesurables.
 
 ### Constat actuel
 
-* Les procédures ne sont pas partagés au sein du SIE-Infra : différences entres agents
+* Les procédures de déploiement sont pas partagées
 * La méthode de déploiements se base sur des tickets passés et non sur une méthode centralisée
 * Le processus n'est pas forcément compris dans son ensemble par tous (fonctionnement d'un Tomcat, et du cluster)
 
@@ -101,7 +107,7 @@ Adrien
 * Visu et partage de la trajectoire dans son ensemble
 * Insuffler la philosophie DevOps (organisation, outils)
 * Challenger les parties prenantes sur une montée en compétences
-progressive, qui sera valorisée en continu
+progressive, valorisée en continu
 * Animer l'équipe
 
 
@@ -112,19 +118,19 @@ progressive, qui sera valorisée en continu
 (Thibaut ?)
 
 * Responsabilité de veiller à la bonne application des procédures mises en place en commun
-* Légtimité en cas de non application des procédures développées
+* Légitimité en cas de non application des procédures développées
 * Leader infra sur ce sujet
 
 
 --
 
-## Equipe
+## Prérequis : Rôles : Equipe
 
 * Devs et Ops : pas de distingo presta/agent mairie
 * Respect strict des procédures développées ensembles
 * Ouverture d'esprit sur l'innovation
 * Nécessité et volonté de comprendre ce qui est fait et pourquoi
-* Reconnaissance du Leader projet et référent infra
+* Reconnaissance du leader projet et référent infra
 
 --
 
@@ -132,9 +138,9 @@ progressive, qui sera valorisée en continu
 
 * Nécessité absolue de toujours comprendre et maîtriser ce que l'on fait et pourquoi
 * Utiliser les logiciels au mieux et pour quoi ils ont été conçus
-* On le clique pas : on scripte ! toujours, pour tout ! (pas de oui mais ;-p)
+* On ne clique pas : on scripte ! toujours, pour tout ! (pas de "oui mais")
 * On travaille sous linux (on ne "rebondit" pas sur Windows)
-* On utilise les outils adaptés (curl, wget, outils cli, scripts)
+* On utilise les outils adaptés (shell particulier, curl, wget, outils cli, scripts)
 
 
 --
@@ -147,7 +153,7 @@ progressive, qui sera valorisée en continu
 * Quand on argumente c'est à l'aide de chiffres calculés de manière
 transparente (possibilité de créer des dashboard avec ces indicateurs)
 réutilisables par la suite
-* "Pair deploying Dev&Ops" : on bouge physiquement bouger au cours de sessions devOps pour partager un même espace de travail
+* "Pair deploying Dev&Ops" : on bouge physiquement au cours de sessions devOps pour partager un même espace/environnement de travail
 
 
 --
@@ -169,12 +175,10 @@ Sans cela, le chantier s'arrête là.
 
 ### Construction des datas
 
-Création d'une table (psql) de load
+Création d'une table (psql) de load afin de produire les indicateurs.
 
-<pre><code>select assignee, aggreg_time, count(*)
-from deploy_war_only
-group by assignee, aggreg_time
-CREATE TABLE public.deploy_war_only  ( 
+<pre><code>
+CREATE TABLE deploy_war_only  ( 
     id             int4 NULL,
     prio           varchar NULL,
     assignee       varchar NULL,
@@ -234,10 +238,10 @@ update deploy_war_only
 
 --
 
-### Premiers retours sur la constituion des datas
+### Premiers retours sur la constitution des datas
 
 * Long à mettre en oeuvre
-* ne se met pas à jour en continu
+* Ne se met pas à jour en continu
 * N'a jamais été produit sous cette forme
 * Très enrichissant et saisissant
 
@@ -314,8 +318,7 @@ aggreg_time count
 ## Objectif de la mission
 
 Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
-306 à 193, soit un facteur 1.6. A priori au vu des distribs cet objectifs
-est atteignable.
+306 h à 193 h, soit un facteur 1.6. 
 
 --
 
@@ -410,9 +413,6 @@ Actes Etat Cicil  0      12
 
 --
 
-
---
-
 ## Par groupe de projet
 
 <pre><code>select project_family, aggreg_time, count(*)
@@ -424,6 +424,7 @@ order by project_family, aggreg_time desc, count(*) desc</code></pre>
 --
 
 <pre>
+project _family         aggreg_time nb
 Actes Etat Cicil        1    12
 ADVERAD                 1    12
 Annuaire                1    11
