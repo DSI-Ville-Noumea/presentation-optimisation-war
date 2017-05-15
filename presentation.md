@@ -6,7 +6,7 @@ controls: true
 theme: sudodoki/reveal-cleaver-theme
 --
 
- Déploiements de WAR (only)
+ Boot devops.
 
 <img src="img/cover.jpg"/>
 
@@ -15,37 +15,111 @@ theme: sudodoki/reveal-cleaver-theme
 
 --
 
-### Philosophie de fond (LEAN)
+### Philosophie
 
-Sera omniprésent le souci, à chaque itération de :
-
-* Proposer des sources d'amélioration continue, opérationelles
-* De les mettre en oeuvre
-* D'en mesurer les effets
-
+* Proposer des sources d'amélioration continue opérationelles
+* Les mettre en oeuvre
+* En mesurer les effets
 
 --
 
-### KPI
+### Constat
 
-<i>"A Key Performance Indicator is a measurable value that demonstrates how effectively
-a company is achieving key business objectives. Organizations use KPIs at
-multiple levels to evaluate their success at reaching targets."</i>
+* Procédures non partagées
+* Méthode de déploiements basée sur des tickets passés vs. une méthode centralisée
+* Processus non maîtrisé par tous (fonctionnement d'un Tomcat, du cluster)
 
 --
 
-
-### Objectifs : Protocole de déploiement
+### Objectifs
 
 * Garantir la compréhension, l'uniformité et le respect du protocole
-* Référencer simplement au sein de documents partagés et versionés une pratique commune
-* Identifier les sources de simplification, exemples de déploiements à l'appui
-* Faire le point sur l'existant : performance de ce processus
+* Analyser les performances de l'existant
+* Améliorer le protocole
+
+--
+
+### Prérequis
+
+* Disponibilité (négociée) des acteurs
+* Légitimité des leaders/référents
+* Respect des engagements
+
+--
+
+### Prérequis : Rôles : leader
+
+Adrien
+
+
+* Leader du projet
+* Visu et partage de la trajectoire
+* Insuffle la philosophie DevOps (organisation, outils)
+* Challenge les parties prenantes sur une montée en compétences
+progressive, valorisée en continu
+* Anime l'équipe
 
 
 --
 
-### Pourquoi le déploiement d'un war (war only)
+### Prérequis : Rôles : Leader Infra 
+
+Thibaut
+
+* Conçoit de nouvelles méthodes
+* Met en oeuvre des solutions
+* Garantit la bonne application des procédures
+
+
+--
+
+## Prérequis : Rôles : Equipe
+
+* Devs et Ops : pas de distingo presta/agent mairie
+* Application éclairée des procédures développées
+* Ouverture d'esprit sur l'innovation
+* Nécessité et volonté de comprendre ce qui est fait et pourquoi
+* Reconnaissance des rôles
+
+--
+
+### Code de conduite 1/2
+
+* Comprendre et maîtriser ce qui est fait et pourquoi
+* Utiliser les logiciels au mieux et ce pour quoi ils ont été conçus
+* Pas de clic : script, pour tout
+* Développer sous linux (pas de "rebond" sur Windows)
+
+--
+
+### Code de conduite 2/2
+
+* Versionner, tout, toujours, tout le temps
+* Faire les choses en continu
+* Pas de mail, mais des tickets
+* S'appuyer sur des indicateurs communs
+* "Pair deploying Dev&Ops" : sessions pour partager un même environnement de travail
+
+
+--
+
+## Startup !
+
+On considère ici que :
+
+* Les deux leaders ont légitimité
+* L'équipe est impliquée
+
+Sans cela, le chantier s'arrête là.
+
+--
+
+<img src="img/start.gif"/>
+
+
+--
+
+### Etape 1 : war only
 
 * Action très simple et atomique
 * Facilement documentable
@@ -57,119 +131,19 @@ multiple levels to evaluate their success at reaching targets."</i>
 
 ### KPI
 
+<i>"A Key Performance Indicator is a measurable value that demonstrates
+how effectively a company is achieving key business objectives. Organizations
+use KPIs at multiple levels to evaluate their success at reaching targets."</i>
+
+
+--
+
+### KPI
+
 * Construction des KPI : détail et complexité de la construction
 * Pose des KPI
 * Analyse des KPI
 * Amélioration de la production de ces KPI (facilité, précision, transparence, opportunités, ...)
-
---
-
-### Perspectives opérationelles
-
-
-* Proposer des sources d'amélioration continue, opérationelles et simples à mettre en oeuvre
-* Recherche de pistes d'optimisation
-* Recherche des tâches automatisables
-* Perspectives DevOps
-
-
---
-
-### Constat actuel
-
-* Les procédures de déploiement sont pas partagées
-* La méthode de déploiements se base sur des tickets passés et non sur une méthode centralisée
-* Le processus n'est pas forcément compris dans son ensemble par tous (fonctionnement d'un Tomcat, et du cluster)
-
---
-
-### Prérequis
-
-
-Afin que ces actions soient menées efficacement et que les bénéfices
-persistent dans le temps, besoin de :
-
-* disponibilité (négociée) des acteurs
-* légitimité des leaders/référents
-* respect des engagements
-
-Sans cela, inutile de se lancer dans ce processus.
-
-
---
-
-### Prérequis : Rôles : leader
-
-Adrien
-
-
-* Leader du projet dans son ensemble
-* Visu et partage de la trajectoire dans son ensemble
-* Insuffler la philosophie DevOps (organisation, outils)
-* Challenger les parties prenantes sur une montée en compétences
-progressive, valorisée en continu
-* Animer l'équipe
-
-
---
-
-### Prérequis : Rôles : Référent Infra 
-
-(Thibaut ?)
-
-* Responsabilité de veiller à la bonne application des procédures mises en place en commun
-* Légitimité en cas de non application des procédures développées
-* Leader infra sur ce sujet
-
-
---
-
-## Prérequis : Rôles : Equipe
-
-* Devs et Ops : pas de distingo presta/agent mairie
-* Respect strict des procédures développées ensembles
-* Ouverture d'esprit sur l'innovation
-* Nécessité et volonté de comprendre ce qui est fait et pourquoi
-* Reconnaissance du leader projet et référent infra
-
---
-
-### Code de conduite 1/2
-
-* Nécessité absolue de toujours comprendre et maîtriser ce que l'on fait et pourquoi
-* Utiliser les logiciels au mieux et pour quoi ils ont été conçus
-* On ne clique pas : on scripte ! toujours, pour tout ! (pas de "oui mais")
-* On travaille sous linux (on ne "rebondit" pas sur Windows)
-* On utilise les outils adaptés (shell particulier, curl, wget, outils cli, scripts)
-
-
---
-
-### Code de conduite 2/2
-
-* On versionne, tout, toujours, tout le temps
-* Faire les choses en continu doit être une obsession
-* On ne fait pas de mail
-* Quand on argumente c'est à l'aide de chiffres calculés de manière
-transparente (possibilité de créer des dashboard avec ces indicateurs)
-réutilisables par la suite
-* "Pair deploying Dev&Ops" : on bouge physiquement au cours de sessions devOps pour partager un même espace/environnement de travail
-
-
---
-
-## Startup !
-
-A compter de ce slide, on considère que tout le monde est OK avec les
-slides précédents et que :
-
-* le leader a légitimité
-* le référent infra a légitimité
-
-Sans cela, le chantier s'arrête là.
---
-
-<img src="img/start.gif"/>
 
 --
 
@@ -195,9 +169,9 @@ CREATE TABLE deploy_war_only  (
 
 --
 
-### BINs de temps
+### tranches de temps
 
-Bin de temps : aggre_time
+aggreg_time
 
 * 4 : strictement supérieur à une heure
 * 3 : stricement supérieur à 30 ' mais inférieur à 1h
@@ -207,7 +181,7 @@ Bin de temps : aggre_time
 
 --
 
-### BINs de temps
+### tranches de temps
 
 Mise à jour de la table :
 
@@ -238,27 +212,9 @@ update deploy_war_only
 
 --
 
-### Premiers retours sur la constitution des datas
+### KPI-01 : Les plus gros déployeurs
 
-* Long à mettre en oeuvre
-* Ne se met pas à jour en continu
-* N'a jamais été produit sous cette forme
-* Très enrichissant et saisissant
-
---
-
-### Pistes d'amélioration continue
-
-* Création d'un univers BI pointant sur Redmine permettant de produire et de
-suivre ces métriques en continu
-* Possibilité de poser des baselines
-
-
---
-
-### Les plus gros déployeurs
-
-Personnes qui ont fait le plus de déploiement war-only à ce jour
+Personnes qui ont fait le plus de déploiements war-only à ce jour
 
 <pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
 from deploy_war_only
@@ -277,21 +233,13 @@ alexandre FAULLE       43
 
 --
 
-### Volume total de déploiement /agent
+### KPI-01 : Volume total de déploiement /agent
 
 <img src="img/nb_deploy-war-total-by-agent.png"></img>
 
 --
 
-### Questions  sur cette répartition
-
-* Répartition actuelle et celle souhaitée à terme
-* Stratégie ?
-* Ressenti des gens par rapport au volume, la répartition, la complexité, la charge
-
---
-
-### Distibution de la complexité des déploiements
+### KPI-02 : Distribution des temps de déploiement
 
 <pre><code>
 select aggreg_time, count(aggreg_time)
@@ -309,20 +257,13 @@ aggreg_time count
 
 --
 
-### Distribution des temps de déploiement
+### KPI-02 : Distribution des temps de déploiement
 
 <img src="img/distribution_complexite_deploiements.png"/>
 
 --
 
-## Objectif de la mission
-
-Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
-306 h à 193 h, soit un facteur 1.6. 
-
---
-
-### Distrib des temps/appli
+### KPI-03 : Distribution des temps/appli
 
 Nb de deploiements avec temps (avec cut à 10)
 
@@ -334,33 +275,7 @@ order by application desc, count(*) desc</code></pre>
 
 --
 
-<pre>
-application	aggreg_time	count
-SIRH-WS           2               64
-SIRH-WS           1               52
-SIRH-PTG-WS       2               52
-SIRH-PTG-WS       1               21
-SIRH-KIOSQUE-J2EE 2               53
-SIRH-KIOSQUE-J2EE 1               25
-SIRH-JOBS         2               17
-SIRH-EAE-WS       1               35
-SIRH-EAE-WS       2               20
-SIRH-ABS-WS       2               31
-SIRH-ABS-WS       1               12
-SIRH              2               61
-SIRH              1               27
-SEAT              1               16
-SEAT              2               14
-Organigramme      2               17
-Missions SIALE    1               15
-Annuaire          1               11
-ADVERAD           1               12
-Actes Etat Cicil  1               12
-</pre>
-
---
-
-## Aggrégat par appli et pivoté
+### KPI-03 : Aggrégat par appli et pivoté
 
 <pre>
 application        nb2     nb1
@@ -381,10 +296,10 @@ Actes Etat Cicil    0      12
 
 --
 
-### SIRH aggrégé
+### KPI-03 : Aggrégat par appli et pivoté (SIRH aggrégé)
 
 <pre>
-application	nb2	nb1
+application     nb2     nb1
 SI.RH           298     172
 SEAT             14      16
 Organigramme     17       0
@@ -396,69 +311,59 @@ Actes Etat Cicil  0      12
 
 --
 
-<img src="img/distrib_par_appli.png"/>
-
---
+### KPI-03 : Aggrégat par appli et pivoté
 
 <img src = "img/distrib_par_appli_pourcentage.png"/>
 
---
-
-<img src = "img/distrib_par_appli-sirh.png"/>
-
 
 --
+### KPI-03 : Aggrégat par appli et pivoté (SIRH aggrégé)
 
 <img src = "img/distrib_par_appli-sirh-pourcentage.png"/>
 
 --
 
-## Par groupe de projet
+### Validation des KPI
 
-<pre><code>select project_family, aggreg_time, count(*)
-from deploy_war_only
-group by project_family, aggreg_time
-having count(*) > 10
-order by project_family, aggreg_time desc, count(*) desc</code></pre>
+* Remarques
+* Suggestion d'autres indicateurs ?
+
 
 --
 
-<pre>
-project _family         aggreg_time nb
-Actes Etat Cicil        1    12
-ADVERAD                 1    12
-Annuaire                1    11
-Missions SIALE          1    15
-Organigramme            2    17
-SEAT                    2    14
-SEAT                    1    16
-SIRH                    3    33
-SIRH                    2    300
-SIRH                    1    180
-</pre>
+### Premiers retours sur la constitution des datas
+
+* Long à mettre en oeuvre
+* Ne se met pas à jour en continu
+* N'a jamais été produit sous cette forme
+* Très enrichissant et saisissant
+* Possibilité de poser des baselines
 
 --
 
-### Pivoté et aggrégé
+### Prérequis pour la production des KPIs
 
-<pre>
-project_family   nb1    nb2     nb3
-Actes Etat Cicil 12     0       0
-ADVERAD          12     0       0
-Annuaire         11     0       0
-Missions SIALE   15     0       0
-Organigramme      0     17      0
-SEAT             16     14      0
-SIRH              1     300     33
-</pre>
+* Création d'un univers BI pointant sur Redmine permettant de produire et de
+suivre ces métriques en continu
+
+
+
+
 
 --
 
-<img src="img/distrib_par_appli-sirh-2.png">
+### Questions  sur cette répartition
+
+* Répartition actuelle et celle souhaitée à terme
+* Stratégie ?
+* Ressenti des gens par rapport au volume, la répartition, la complexité, la charge
 
 --
 
-<img src="img/distrib_par_appli-sirh-pourcentage-2.png">
+## Objectif de la mission
+
+Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
+306 h à 193 h, soit un facteur 1.6. 
 
 --
 
