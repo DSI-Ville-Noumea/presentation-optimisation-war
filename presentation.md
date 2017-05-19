@@ -22,6 +22,12 @@ theme: sudodoki/reveal-cleaver-theme
 * En mesurer les effets
 
 --
+### Première application 
+
+les déploiements
+
+--
+
 
 ### Constat
 
@@ -75,7 +81,9 @@ Thibaut
 
 ## Prérequis : Rôles : Equipe
 
-* Devs et Ops : pas de distingo presta/agent mairie
+Devs & Ops
+
+* Pas de distingo presta/agent mairie
 * Application éclairée des procédures développées
 * Ouverture d'esprit sur l'innovation
 * Nécessité et volonté de comprendre ce qui est fait et pourquoi
@@ -98,7 +106,7 @@ Thibaut
 * Faire les choses en continu
 * Pas de mail, mais des tickets
 * S'appuyer sur des indicateurs communs
-* "Pair deploying Dev&Ops" : sessions pour partager un même environnement de travail
+* "Pair deploying Dev&Ops" : sessions sur un même environnement de travail
 
 
 --
@@ -147,7 +155,7 @@ use KPIs at multiple levels to evaluate their success at reaching targets."</i>
 
 --
 
-### Construction des datas
+### Construction des KPIs
 
 Création d'une table (psql) de load afin de produire les indicateurs.
 
@@ -174,7 +182,7 @@ CREATE TABLE deploy_war_only  (
 aggreg_time
 
 * 4 : strictement supérieur à une heure
-* 3 : stricement supérieur à 30 ' mais inférieur à 1h
+* 3 : strictement supérieur à 30 ' mais inférieur à 1h
 * 2 : entre 15' et 30 '
 * 1 : moins de 15' (la cible)
 
@@ -265,7 +273,7 @@ aggreg_time count
 
 ### KPI-03 : Distribution des temps/appli
 
-Nb de deploiements avec temps (avec cut à 10)
+Nb. de deploiements avec temps (avec cut à 10)
 
 <pre><code>select application, aggreg_time, count(aggreg_time)
 from deploy_war_only
@@ -275,28 +283,7 @@ order by application desc, count(*) desc</code></pre>
 
 --
 
-### KPI-03 : Aggrégat par appli et pivoté
-
-<pre>
-application        nb2     nb1
-SIRH-WS            64      52
-SIRH-PTG-WS        52      21
-SIRH-KIOSQUE-J2EE  53      25
-SIRH-JOBS          17       0
-SIRH-EAE-WS        20      35
-SIRH-ABS-WS        31      12
-SIRH               61      27
-SEAT               14      16
-Organigramme       17       0
-Missions SIALE      0      15
-Annuaire            0      11
-ADVERAD             0      12
-Actes Etat Cicil    0      12
-</pre>
-
---
-
-### KPI-03 : Aggrégat par appli et pivoté (SIRH aggrégé)
+### KPI-03 : Aggrégat par appli (SIRH aggrégé)
 
 <pre>
 application     nb2     nb1
@@ -311,33 +298,25 @@ Actes Etat Cicil  0      12
 
 --
 
-### KPI-03 : Aggrégat par appli et pivoté
-
-<img src = "img/distrib_par_appli_pourcentage.png"/>
-
-
---
-### KPI-03 : Aggrégat par appli et pivoté (SIRH aggrégé)
+### KPI-03 : Aggrégat par appli (SIRH aggrégé)
 
 <img src = "img/distrib_par_appli-sirh-pourcentage.png"/>
 
 --
 
-### Validation des KPI
+### Pertinence des KPI
 
-* Remarques
-* Suggestion d'autres indicateurs ?
-
+Réactions face à ces KPI.
 
 --
 
-### Premiers retours sur la constitution des datas
+### Premiers retours sur la constitution des KPIs
 
 * Long à mettre en oeuvre
 * Ne se met pas à jour en continu
 * N'a jamais été produit sous cette forme
 * Très enrichissant et saisissant
-* Possibilité de poser des baselines
+* Possibilité de poser des métriques de référence (baseline)
 
 --
 
@@ -346,42 +325,34 @@ Actes Etat Cicil  0      12
 * Création d'un univers BI pointant sur Redmine permettant de produire et de
 suivre ces métriques en continu
 
+--
 
+### De la mesure à la stratégie
 
+Traduire les KPI en stratégie.
 
 
 --
 
-### Questions  sur cette répartition
+### Stratégies possibles
 
-* Répartition actuelle et celle souhaitée à terme
-* Stratégie ?
-* Ressenti des gens par rapport au volume, la répartition, la complexité, la charge
-
---
-
-## Objectif de la mission
-
-Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
-306 h à 193 h, soit un facteur 1.6. 
+* Uniformisation des performances des agents
+* Réduction du temps passé/déploiement
+* Travail autour des gros consommateurs (diminution du nb. de déploiements, refonte de code, ...)
+* ...
 
 --
 
-### Pistes autour de SI.RH
+## Objectif 1.0
 
-* Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois
-* Complexité Organigramme et SI.RH différentes des autres applications notable
+Pour tous, les mêmes :
 
-
---
-
-### Volume/temps par agent
-
-<img src="img/stats_par_agent_1.png"/>
+* pratiques
+* performances
 
 --
 
-### Dis-tribution par agent
+### Constat : distribution du temps/agent
 
 <img src="img/stats_par_agent_2.png"/>
 --
@@ -389,35 +360,42 @@ Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
 ### Explications
 
 * On réserve les plus chauds à certains
-* Certains ont une méthode personnelle de déployer, plus efficace
-* Certains notent pas le temps redmine de la même manière
+* Certains ont une méthode personnelle pour déployer, plus efficace
+* Certains ne notent pas le temps redmine de la même manière
+* ...
 
 --
 
-### Premières actions
+### Etablir un étalon
 
-Avant de changer quoi que ce soit au protocle actuel, nous avons besoin d'une
+Avant de changer quoi que ce soit, nous avons besoin d'une
 granularité plus fine sur la distribution du temps passé au sein d'un
-déploiement, sur un projet fixé et qui servira d'étalon.
+déploiement, sur un projet fixé.
+
+Ce sera notre étalon.
+
+--
+
+### Métriques au sein d'un déploiement
 
 * Récup/download d'un war
-* Temps (complet) de copie vers le tomcat
+* Temps de copie vers le tomcat
 * Test reverse proxy
 * Test appli up
-* (Suppression de l'ancien war)
+* Suppression de l'ancien war
 
 --
 
 ### Application war étalon
 
-Commencer par une appli simple (pas SI.RH) : Appock ?
+Commencer par une appli simple (pas SI.RH) : Appock/Shinigami ?
 
 
 --
 
-### Production d'un profil type de déploiement (ex : appock
+### Exemple de métrique sur un déploiement
 
-Exemples de chiffres :
+appock :
 
 <pre>
 Actions                   Temps (minutes)
@@ -430,11 +408,71 @@ Suppression ancien war    5
 
 --
 
-### Profil type
+### Métrique type
 
 <img src="img/exemple_profil_temps_deploiement_war.png"/>
 
 --
 
+### Résultats attendus
+
+Dessin de comparatif avant/apres des perfs /personne : Aujourd'hui -> Objectif 1.0.
+
+--
+
+### Objectifs 2.x
+
+Améliorer par itération les métriques d'un déploiement.
+
+
+* 2.0 : download du war
+* 2.1 : copie vers le tomcat
+* 2.2 : Test reverse proxy
+* 2.3 : Test appli up
+* ...
+
+--
+
+### Roadmap 2.x
+
+La Roadmap des objectifs 2.x sera définie grâce aux KPIs
+de performances remontés sur le déploiement étalon.
+
+--
+## Résultats attendus
+
+Dessin de comparatif avant/apres des perfs / metrique : objectif 1.0->2.0->2.1->...
+
+
+--
+
+### La suite
+
+* Les besoins d'amélioration vont émerger de l'équipe
+* Généralisation de ce cycle (KPI/Analyse/Amélioration) à tous les types de déploiements
+* La dynamique DevOps est lancée
+
+--
+
+
 <img src="img/squad.gif"/>
 
+--
+### POUBELLE
+
+--
+
+### Questions  sur cette répartition
+
+* Répartition actuelle et celle souhaitée à terme
+* Stratégie ?
+* Ressenti par rapport au volume, la répartition, la complexité, la charge
+* Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
+306 h à 193 h, soit un facteur 1.6. 
+
+--
+
+### Pistes autour de SI.RH
+
+* Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois
+* Complexité Organigramme et SI.RH différentes des autres applications notable
