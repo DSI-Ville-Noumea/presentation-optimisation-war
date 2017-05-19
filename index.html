@@ -1780,40 +1780,124 @@ based on dark.css by Ivan Sagalaev
 <div class="reveal">
     <div class="slides">
         <section>
-    <p>Déploiements de WAR (only)</p>
+    <p>Boot devops.</p>
 <p><img src="img/cover.jpg"/></p>
 <p> Le choc de simplification.</p>
 
   </section>
   <section>
-    <h3 id="philosophie-de-fond-lean-">Philosophie de fond (LEAN)</h3>
-<p>Sera omniprésent le souci, à chaque itération de :</p>
+    <h3 id="philosophie">Philosophie</h3>
 <ul>
-<li>Proposer des sources d&#39;amélioration continue, opérationelles</li>
-<li>De les mettre en oeuvre</li>
-<li>D&#39;en mesurer les effets</li>
+<li>Proposer des sources d&#39;amélioration continue opérationelles</li>
+<li>Les mettre en oeuvre</li>
+<li>En mesurer les effets</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="kpi">KPI</h3>
-<p><i>&quot;A Key Performance Indicator is a measurable value that demonstrates how effectively
-a company is achieving key business objectives. Organizations use KPIs at
-multiple levels to evaluate their success at reaching targets.&quot;</i></p>
+    <h3 id="premi-re-application">Première application</h3>
+<p>les déploiements</p>
 
   </section>
   <section>
-    <h3 id="objectifs-protocole-de-d-ploiement">Objectifs : Protocole de déploiement</h3>
+    <h3 id="constat">Constat</h3>
+<ul>
+<li>Procédures non partagées</li>
+<li>Méthode de déploiements basée sur des tickets passés vs. une méthode centralisée</li>
+<li>Processus non maîtrisé par tous (fonctionnement d&#39;un Tomcat, du cluster)</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="objectifs">Objectifs</h3>
 <ul>
 <li>Garantir la compréhension, l&#39;uniformité et le respect du protocole</li>
-<li>Référencer simplement au sein de documents partagés et versionés une pratique commune</li>
-<li>Identifier les sources de simplification, exemples de déploiements à l&#39;appui</li>
-<li>Faire le point sur l&#39;existant : performance de ce processus</li>
+<li>Analyser les performances de l&#39;existant</li>
+<li>Améliorer le protocole</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="pourquoi-le-d-ploiement-d-un-war-war-only-">Pourquoi le déploiement d&#39;un war (war only)</h3>
+    <h3 id="pr-requis">Prérequis</h3>
+<ul>
+<li>Disponibilité (négociée) des acteurs</li>
+<li>Légitimité des leaders/référents</li>
+<li>Respect des engagements</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="pr-requis-r-les-leader">Prérequis : Rôles : leader</h3>
+<p>Adrien</p>
+<ul>
+<li>Leader du projet</li>
+<li>Visu et partage de la trajectoire</li>
+<li>Insuffle la philosophie DevOps (organisation, outils)</li>
+<li>Challenge les parties prenantes sur une montée en compétences
+progressive, valorisée en continu</li>
+<li>Anime l&#39;équipe</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="pr-requis-r-les-leader-infra">Prérequis : Rôles : Leader Infra</h3>
+<p>Thibaut</p>
+<ul>
+<li>Conçoit de nouvelles méthodes</li>
+<li>Met en oeuvre des solutions</li>
+<li>Garantit la bonne application des procédures</li>
+</ul>
+
+  </section>
+  <section>
+    <h2 id="pr-requis-r-les-equipe">Prérequis : Rôles : Equipe</h2>
+<p>Devs &amp; Ops</p>
+<ul>
+<li>Pas de distingo presta/agent mairie</li>
+<li>Application éclairée des procédures développées</li>
+<li>Ouverture d&#39;esprit sur l&#39;innovation</li>
+<li>Nécessité et volonté de comprendre ce qui est fait et pourquoi</li>
+<li>Reconnaissance des rôles</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="code-de-conduite-1-2">Code de conduite 1/2</h3>
+<ul>
+<li>Comprendre et maîtriser ce qui est fait et pourquoi</li>
+<li>Utiliser les logiciels au mieux et ce pour quoi ils ont été conçus</li>
+<li>Pas de clic : script, pour tout</li>
+<li>Développer sous linux (pas de &quot;rebond&quot; sur Windows)</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="code-de-conduite-2-2">Code de conduite 2/2</h3>
+<ul>
+<li>Versionner, tout, toujours, tout le temps</li>
+<li>Faire les choses en continu</li>
+<li>Pas de mail, mais des tickets</li>
+<li>S&#39;appuyer sur des indicateurs communs</li>
+<li>&quot;Pair deploying Dev&amp;Ops&quot; : sessions sur un même environnement de travail</li>
+</ul>
+
+  </section>
+  <section>
+    <h2 id="startup-">Startup !</h2>
+<p>On considère ici que :</p>
+<ul>
+<li>Les deux leaders ont légitimité</li>
+<li>L&#39;équipe est impliquée</li>
+</ul>
+<p>Sans cela, le chantier s&#39;arrête là.</p>
+
+  </section>
+  <section>
+    <p><img src="img/start.gif"/></p>
+
+  </section>
+  <section>
+    <h3 id="etape-1-war-only">Etape 1 : war only</h3>
 <ul>
 <li>Action très simple et atomique</li>
 <li>Facilement documentable</li>
@@ -1821,6 +1905,13 @@ multiple levels to evaluate their success at reaching targets.&quot;</i></p>
 <li>Gros potentiel d&#39;optimisation à moindres frais</li>
 <li>Ouvre la porte vers les pratiques DevOps</li>
 </ul>
+
+  </section>
+  <section>
+    <h3 id="kpi">KPI</h3>
+<p><i>&quot;A Key Performance Indicator is a measurable value that demonstrates
+how effectively a company is achieving key business objectives. Organizations
+use KPIs at multiple levels to evaluate their success at reaching targets.&quot;</i></p>
 
   </section>
   <section>
@@ -1834,111 +1925,7 @@ multiple levels to evaluate their success at reaching targets.&quot;</i></p>
 
   </section>
   <section>
-    <h3 id="perspectives-op-rationelles">Perspectives opérationelles</h3>
-<ul>
-<li>Proposer des sources d&#39;amélioration continue, opérationelles et simples à mettre en oeuvre</li>
-<li>Recherche de pistes d&#39;optimisation</li>
-<li>Recherche des tâches automatisables</li>
-<li>Perspectives DevOps</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="constat-actuel">Constat actuel</h3>
-<ul>
-<li>Les procédures de déploiement sont pas partagées</li>
-<li>La méthode de déploiements se base sur des tickets passés et non sur une méthode centralisée</li>
-<li>Le processus n&#39;est pas forcément compris dans son ensemble par tous (fonctionnement d&#39;un Tomcat, et du cluster)</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="pr-requis">Prérequis</h3>
-<p>Afin que ces actions soient menées efficacement et que les bénéfices
-persistent dans le temps, besoin de :</p>
-<ul>
-<li>disponibilité (négociée) des acteurs</li>
-<li>légitimité des leaders/référents</li>
-<li>respect des engagements</li>
-</ul>
-<p>Sans cela, inutile de se lancer dans ce processus.</p>
-
-  </section>
-  <section>
-    <h3 id="pr-requis-r-les-leader">Prérequis : Rôles : leader</h3>
-<p>Adrien</p>
-<ul>
-<li>Leader du projet dans son ensemble</li>
-<li>Visu et partage de la trajectoire dans son ensemble</li>
-<li>Insuffler la philosophie DevOps (organisation, outils)</li>
-<li>Challenger les parties prenantes sur une montée en compétences
-progressive, valorisée en continu</li>
-<li>Animer l&#39;équipe</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="pr-requis-r-les-r-f-rent-infra">Prérequis : Rôles : Référent Infra</h3>
-<p>(Thibaut ?)</p>
-<ul>
-<li>Responsabilité de veiller à la bonne application des procédures mises en place en commun</li>
-<li>Légitimité en cas de non application des procédures développées</li>
-<li>Leader infra sur ce sujet</li>
-</ul>
-
-  </section>
-  <section>
-    <h2 id="pr-requis-r-les-equipe">Prérequis : Rôles : Equipe</h2>
-<ul>
-<li>Devs et Ops : pas de distingo presta/agent mairie</li>
-<li>Respect strict des procédures développées ensembles</li>
-<li>Ouverture d&#39;esprit sur l&#39;innovation</li>
-<li>Nécessité et volonté de comprendre ce qui est fait et pourquoi</li>
-<li>Reconnaissance du leader projet et référent infra</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="code-de-conduite-1-2">Code de conduite 1/2</h3>
-<ul>
-<li>Nécessité absolue de toujours comprendre et maîtriser ce que l&#39;on fait et pourquoi</li>
-<li>Utiliser les logiciels au mieux et pour quoi ils ont été conçus</li>
-<li>On ne clique pas : on scripte ! toujours, pour tout ! (pas de &quot;oui mais&quot;)</li>
-<li>On travaille sous linux (on ne &quot;rebondit&quot; pas sur Windows)</li>
-<li>On utilise les outils adaptés (shell particulier, curl, wget, outils cli, scripts)</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="code-de-conduite-2-2">Code de conduite 2/2</h3>
-<ul>
-<li>On versionne, tout, toujours, tout le temps</li>
-<li>Faire les choses en continu doit être une obsession</li>
-<li>On ne fait pas de mail</li>
-<li>Quand on argumente c&#39;est à l&#39;aide de chiffres calculés de manière
-transparente (possibilité de créer des dashboard avec ces indicateurs)
-réutilisables par la suite</li>
-<li>&quot;Pair deploying Dev&amp;Ops&quot; : on bouge physiquement au cours de sessions devOps pour partager un même espace/environnement de travail</li>
-</ul>
-
-  </section>
-  <section>
-    <h2 id="startup-">Startup !</h2>
-<p>A compter de ce slide, on considère que tout le monde est OK avec les
-slides précédents et que :</p>
-<ul>
-<li>le leader a légitimité</li>
-<li>le référent infra a légitimité</li>
-</ul>
-<p>Sans cela, le chantier s&#39;arrête là.</p>
-
-  </section>
-  <section>
-    <p><img src="img/start.gif"/></p>
-
-  </section>
-  <section>
-    <h3 id="construction-des-datas">Construction des datas</h3>
+    <h3 id="construction-des-kpis">Construction des KPIs</h3>
 <p>Création d&#39;une table (psql) de load afin de produire les indicateurs.</p>
 <pre><code>
 CREATE TABLE deploy_war_only  ( 
@@ -1955,18 +1942,18 @@ CREATE TABLE deploy_war_only  (
 <pre><code>copy deploy_war_only from '/tmp/issues.csv' DELIMITER ';' CSV;</code></pre>
   </section>
   <section>
-    <h3 id="bins-de-temps">BINs de temps</h3>
-<p>Bin de temps : aggre_time</p>
+    <h3 id="tranches-de-temps">tranches de temps</h3>
+<p>aggreg_time</p>
 <ul>
 <li>4 : strictement supérieur à une heure</li>
-<li>3 : stricement supérieur à 30 &#39; mais inférieur à 1h</li>
+<li>3 : strictement supérieur à 30 &#39; mais inférieur à 1h</li>
 <li>2 : entre 15&#39; et 30 &#39;</li>
 <li>1 : moins de 15&#39; (la cible)</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="bins-de-temps">BINs de temps</h3>
+    <h3 id="tranches-de-temps">tranches de temps</h3>
 <p>Mise à jour de la table :</p>
 <pre><code>update deploy_war_only
 set aggreg_time=4 where (temps > 1);
@@ -1990,27 +1977,8 @@ update deploy_war_only
     where application like 'SIRH%';</code></pre>
   </section>
   <section>
-    <h3 id="premiers-retours-sur-la-constitution-des-datas">Premiers retours sur la constitution des datas</h3>
-<ul>
-<li>Long à mettre en oeuvre</li>
-<li>Ne se met pas à jour en continu</li>
-<li>N&#39;a jamais été produit sous cette forme</li>
-<li>Très enrichissant et saisissant</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="pistes-d-am-lioration-continue">Pistes d&#39;amélioration continue</h3>
-<ul>
-<li>Création d&#39;un univers BI pointant sur Redmine permettant de produire et de
-suivre ces métriques en continu</li>
-<li>Possibilité de poser des baselines</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="les-plus-gros-d-ployeurs">Les plus gros déployeurs</h3>
-<p>Personnes qui ont fait le plus de déploiement war-only à ce jour</p>
+    <h3 id="kpi-01-les-plus-gros-d-ployeurs">KPI-01 : Les plus gros déployeurs</h3>
+<p>Personnes qui ont fait le plus de déploiements war-only à ce jour</p>
 <pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
 from deploy_war_only
 where assignee not in ('David MAJOREL', 'Melanie Gault',
@@ -2027,21 +1995,12 @@ alexandre FAULLE       43
 </pre>
   </section>
   <section>
-    <h3 id="volume-total-de-d-ploiement-agent">Volume total de déploiement /agent</h3>
+    <h3 id="kpi-01-volume-total-de-d-ploiement-agent">KPI-01 : Volume total de déploiement /agent</h3>
 <p><img src="img/nb_deploy-war-total-by-agent.png"></img></p>
 
   </section>
   <section>
-    <h3 id="questions-sur-cette-r-partition">Questions  sur cette répartition</h3>
-<ul>
-<li>Répartition actuelle et celle souhaitée à terme</li>
-<li>Stratégie ?</li>
-<li>Ressenti des gens par rapport au volume, la répartition, la complexité, la charge</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="distibution-de-la-complexit-des-d-ploiements">Distibution de la complexité des déploiements</h3>
+    <h3 id="kpi-02-distribution-des-temps-de-d-ploiement">KPI-02 : Distribution des temps de déploiement</h3>
 <pre><code>
 select aggreg_time, count(aggreg_time)
 from deploy_war_only
@@ -2057,19 +2016,13 @@ aggreg_time count
 </pre>
   </section>
   <section>
-    <h3 id="distribution-des-temps-de-d-ploiement">Distribution des temps de déploiement</h3>
+    <h3 id="kpi-02-distribution-des-temps-de-d-ploiement">KPI-02 : Distribution des temps de déploiement</h3>
 <p><img src="img/distribution_complexite_deploiements.png"/></p>
 
   </section>
   <section>
-    <h2 id="objectif-de-la-mission">Objectif de la mission</h2>
-<p>Basculer les deploiements de 30&#39; en 15&#39;, on passe d&#39;un volume d&#39;heures de
-306 h à 193 h, soit un facteur 1.6.</p>
-
-  </section>
-  <section>
-    <h3 id="distrib-des-temps-appli">Distrib des temps/appli</h3>
-<p>Nb de deploiements avec temps (avec cut à 10)</p>
+    <h3 id="kpi-03-distribution-des-temps-appli">KPI-03 : Distribution des temps/appli</h3>
+<p>Nb. de deploiements avec temps (avec cut à 10)</p>
 <pre><code>select application, aggreg_time, count(aggreg_time)
 from deploy_war_only
 group by application, aggreg_time
@@ -2077,53 +2030,9 @@ having count(*) > 10
 order by application desc, count(*) desc</code></pre>
   </section>
   <section>
-    <pre>
-application    aggreg_time    count
-SIRH-WS           2               64
-SIRH-WS           1               52
-SIRH-PTG-WS       2               52
-SIRH-PTG-WS       1               21
-SIRH-KIOSQUE-J2EE 2               53
-SIRH-KIOSQUE-J2EE 1               25
-SIRH-JOBS         2               17
-SIRH-EAE-WS       1               35
-SIRH-EAE-WS       2               20
-SIRH-ABS-WS       2               31
-SIRH-ABS-WS       1               12
-SIRH              2               61
-SIRH              1               27
-SEAT              1               16
-SEAT              2               14
-Organigramme      2               17
-Missions SIALE    1               15
-Annuaire          1               11
-ADVERAD           1               12
-Actes Etat Cicil  1               12
-</pre>
-  </section>
-  <section>
-    <h2 id="aggr-gat-par-appli-et-pivot-">Aggrégat par appli et pivoté</h2>
+    <h3 id="kpi-03-aggr-gat-par-appli-sirh-aggr-g-">KPI-03 : Aggrégat par appli (SIRH aggrégé)</h3>
 <pre>
-application        nb2     nb1
-SIRH-WS            64      52
-SIRH-PTG-WS        52      21
-SIRH-KIOSQUE-J2EE  53      25
-SIRH-JOBS          17       0
-SIRH-EAE-WS        20      35
-SIRH-ABS-WS        31      12
-SIRH               61      27
-SEAT               14      16
-Organigramme       17       0
-Missions SIALE      0      15
-Annuaire            0      11
-ADVERAD             0      12
-Actes Etat Cicil    0      12
-</pre>
-  </section>
-  <section>
-    <h3 id="sirh-aggr-g-">SIRH aggrégé</h3>
-<pre>
-application    nb2    nb1
+application     nb2     nb1
 SI.RH           298     172
 SEAT             14      16
 Organigramme     17       0
@@ -2134,80 +2043,60 @@ Actes Etat Cicil  0      12
 </pre>
   </section>
   <section>
-    <p><img src="img/distrib_par_appli.png"/></p>
+    <h3 id="kpi-03-aggr-gat-par-appli-sirh-aggr-g-">KPI-03 : Aggrégat par appli (SIRH aggrégé)</h3>
+<p><img src = "img/distrib_par_appli-sirh-pourcentage.png"/></p>
 
   </section>
   <section>
-    <p><img src = "img/distrib_par_appli_pourcentage.png"/></p>
+    <h3 id="pertinence-des-kpi">Pertinence des KPI</h3>
+<p>Réactions face à ces KPI.</p>
 
   </section>
   <section>
-    <p><img src = "img/distrib_par_appli-sirh.png"/></p>
-
-  </section>
-  <section>
-    <p><img src = "img/distrib_par_appli-sirh-pourcentage.png"/></p>
-
-  </section>
-  <section>
-    <h2 id="par-groupe-de-projet">Par groupe de projet</h2>
-<pre><code>select project_family, aggreg_time, count(*)
-from deploy_war_only
-group by project_family, aggreg_time
-having count(*) > 10
-order by project_family, aggreg_time desc, count(*) desc</code></pre>
-  </section>
-  <section>
-    <pre>
-project _family         aggreg_time nb
-Actes Etat Cicil        1    12
-ADVERAD                 1    12
-Annuaire                1    11
-Missions SIALE          1    15
-Organigramme            2    17
-SEAT                    2    14
-SEAT                    1    16
-SIRH                    3    33
-SIRH                    2    300
-SIRH                    1    180
-</pre>
-  </section>
-  <section>
-    <h3 id="pivot-et-aggr-g-">Pivoté et aggrégé</h3>
-<pre>
-project_family   nb1    nb2     nb3
-Actes Etat Cicil 12     0       0
-ADVERAD          12     0       0
-Annuaire         11     0       0
-Missions SIALE   15     0       0
-Organigramme      0     17      0
-SEAT             16     14      0
-SIRH              1     300     33
-</pre>
-  </section>
-  <section>
-    <p><img src="img/distrib_par_appli-sirh-2.png"></p>
-
-  </section>
-  <section>
-    <p><img src="img/distrib_par_appli-sirh-pourcentage-2.png"></p>
-
-  </section>
-  <section>
-    <h3 id="pistes-autour-de-si-rh">Pistes autour de SI.RH</h3>
+    <h3 id="premiers-retours-sur-la-constitution-des-kpis">Premiers retours sur la constitution des KPIs</h3>
 <ul>
-<li>Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois</li>
-<li>Complexité Organigramme et SI.RH différentes des autres applications notable</li>
+<li>Long à mettre en oeuvre</li>
+<li>Ne se met pas à jour en continu</li>
+<li>N&#39;a jamais été produit sous cette forme</li>
+<li>Très enrichissant et saisissant</li>
+<li>Possibilité de poser des métriques de référence (baseline)</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="volume-temps-par-agent">Volume/temps par agent</h3>
-<p><img src="img/stats_par_agent_1.png"/></p>
+    <h3 id="pr-requis-pour-la-production-des-kpis">Prérequis pour la production des KPIs</h3>
+<ul>
+<li>Création d&#39;un univers BI pointant sur Redmine permettant de produire et de
+suivre ces métriques en continu</li>
+</ul>
 
   </section>
   <section>
-    <h3 id="dis-tribution-par-agent">Dis-tribution par agent</h3>
+    <h3 id="de-la-mesure-la-strat-gie">De la mesure à la stratégie</h3>
+<p>Traduire les KPI en stratégie.</p>
+
+  </section>
+  <section>
+    <h3 id="strat-gies-possibles">Stratégies possibles</h3>
+<ul>
+<li>Uniformisation des performances des agents</li>
+<li>Réduction du temps passé/déploiement</li>
+<li>Travail autour des gros consommateurs (diminution du nb. de déploiements, refonte de code, ...)</li>
+<li>...</li>
+</ul>
+
+  </section>
+  <section>
+    <h2 id="objectif-1-0">Objectif 1.0</h2>
+<p>Pour tous, les mêmes :</p>
+<ul>
+<li>pratiques</li>
+<li>performances</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="constat-distribution-du-temps-agent">Constat : distribution du temps/agent</h3>
 <p><img src="img/stats_par_agent_2.png"/></p>
 
   </section>
@@ -2215,33 +2104,39 @@ SIRH              1     300     33
     <h3 id="explications">Explications</h3>
 <ul>
 <li>On réserve les plus chauds à certains</li>
-<li>Certains ont une méthode personnelle de déployer, plus efficace</li>
-<li>Certains notent pas le temps redmine de la même manière</li>
+<li>Certains ont une méthode personnelle pour déployer, plus efficace</li>
+<li>Certains ne notent pas le temps redmine de la même manière</li>
+<li>...</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="premi-res-actions">Premières actions</h3>
-<p>Avant de changer quoi que ce soit au protocle actuel, nous avons besoin d&#39;une
+    <h3 id="etablir-un-talon">Etablir un étalon</h3>
+<p>Avant de changer quoi que ce soit, nous avons besoin d&#39;une
 granularité plus fine sur la distribution du temps passé au sein d&#39;un
-déploiement, sur un projet fixé et qui servira d&#39;étalon.</p>
+déploiement, sur un projet fixé.</p>
+<p>Ce sera notre étalon.</p>
+
+  </section>
+  <section>
+    <h3 id="m-triques-au-sein-d-un-d-ploiement">Métriques au sein d&#39;un déploiement</h3>
 <ul>
 <li>Récup/download d&#39;un war</li>
-<li>Temps (complet) de copie vers le tomcat</li>
+<li>Temps de copie vers le tomcat</li>
 <li>Test reverse proxy</li>
 <li>Test appli up</li>
-<li>(Suppression de l&#39;ancien war)</li>
+<li>Suppression de l&#39;ancien war</li>
 </ul>
 
   </section>
   <section>
     <h3 id="application-war-talon">Application war étalon</h3>
-<p>Commencer par une appli simple (pas SI.RH) : Appock ?</p>
+<p>Commencer par une appli simple (pas SI.RH) : Appock/Shinigami ?</p>
 
   </section>
   <section>
-    <h3 id="production-d-un-profil-type-de-d-ploiement-ex-appock">Production d&#39;un profil type de déploiement (ex : appock</h3>
-<p>Exemples de chiffres :</p>
+    <h3 id="exemple-de-m-trique-sur-un-d-ploiement">Exemple de métrique sur un déploiement</h3>
+<p>appock :</p>
 <pre>
 Actions                   Temps (minutes)
 Download du war           8
@@ -2252,12 +2147,72 @@ Suppression ancien war    5
 </pre>
   </section>
   <section>
-    <h3 id="profil-type">Profil type</h3>
+    <h3 id="m-trique-type">Métrique type</h3>
 <p><img src="img/exemple_profil_temps_deploiement_war.png"/></p>
 
   </section>
   <section>
+    <h3 id="r-sultats-attendus">Résultats attendus</h3>
+<p>Dessin de comparatif avant/apres des perfs /personne : Aujourd&#39;hui -&gt; Objectif 1.0.</p>
+
+  </section>
+  <section>
+    <h3 id="objectifs-2-x">Objectifs 2.x</h3>
+<p>Améliorer par itération les métriques d&#39;un déploiement.</p>
+<ul>
+<li>2.0 : download du war</li>
+<li>2.1 : copie vers le tomcat</li>
+<li>2.2 : Test reverse proxy</li>
+<li>2.3 : Test appli up</li>
+<li>...</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="roadmap-2-x">Roadmap 2.x</h3>
+<p>La Roadmap des objectifs 2.x sera définie grâce aux KPIs
+de performances remontés sur le déploiement étalon.</p>
+
+  </section>
+  <section>
+    <h2 id="r-sultats-attendus">Résultats attendus</h2>
+<p>Dessin de comparatif avant/apres des perfs / metrique : objectif 1.0-&gt;2.0-&gt;2.1-&gt;...</p>
+
+  </section>
+  <section>
+    <h3 id="la-suite">La suite</h3>
+<ul>
+<li>Les besoins d&#39;amélioration vont émerger de l&#39;équipe</li>
+<li>Généralisation de ce cycle (KPI/Analyse/Amélioration) à tous les types de déploiements</li>
+<li>La dynamique DevOps est lancée</li>
+</ul>
+
+  </section>
+  <section>
     <p><img src="img/squad.gif"/></p>
+
+  </section>
+  <section>
+    <h3 id="poubelle">POUBELLE</h3>
+
+  </section>
+  <section>
+    <h3 id="questions-sur-cette-r-partition">Questions  sur cette répartition</h3>
+<ul>
+<li>Répartition actuelle et celle souhaitée à terme</li>
+<li>Stratégie ?</li>
+<li>Ressenti par rapport au volume, la répartition, la complexité, la charge</li>
+<li>Basculer les deploiements de 30&#39; en 15&#39;, on passe d&#39;un volume d&#39;heures de
+306 h à 193 h, soit un facteur 1.6.</li>
+</ul>
+
+  </section>
+  <section>
+    <h3 id="pistes-autour-de-si-rh">Pistes autour de SI.RH</h3>
+<ul>
+<li>Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois</li>
+<li>Complexité Organigramme et SI.RH différentes des autres applications notable</li>
+</ul>
 
   </section>
   <section>
