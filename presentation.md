@@ -322,7 +322,7 @@ Réactions face à ces KPI.
 
 ### Prérequis pour la production des KPIs
 
-* Création d'un univers BI pointant sur Redmine permettant de produire et de
+Création d'un univers BI pointant sur Redmine permettant de produire et de
 suivre ces métriques en continu
 
 --
@@ -414,11 +414,21 @@ Suppression ancien war    5
 
 --
 
-### Résultats attendus
+### Actuel : Performances disparates
 
-Dessin de comparatif avant/apres des perfs /personne : Aujourd'hui -> Objectif 1.0.
+
+
+<img src="img/constat_avant_objectif_0.png"/>
+
 
 --
+## Objectif 1.0 : uniformité
+
+
+<img src="img/objectif_1.0.png"/>
+
+--
+
 
 ### Objectifs 2.x
 
@@ -439,9 +449,20 @@ La Roadmap des objectifs 2.x sera définie grâce aux KPIs
 de performances remontés sur le déploiement étalon.
 
 --
-## Résultats attendus
 
-Dessin de comparatif avant/apres des perfs / metrique : objectif 1.0->2.0->2.1->...
+### Objectif 2.0
+
+<img src="img/objectif_2.0.png"/>
+
+--
+### Objectif 2.1
+
+<img src="img/objectif_2.1.png"/>
+
+--
+### Exemple de Progression partagée
+
+<img src="img/objectif_roadmap.png"/>
 
 
 --
