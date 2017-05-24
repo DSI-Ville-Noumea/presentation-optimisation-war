@@ -1780,23 +1780,18 @@ based on dark.css by Ivan Sagalaev
 <div class="reveal">
     <div class="slides">
         <section>
-    <p>Boot devops.</p>
-<p><img src="img/cover.jpg"/></p>
-<p> Le choc de simplification.</p>
+    <p>Déploiements</p>
+<p><img src="img/cover.jpg" alt="Image de couverture"></p>
+<p> Le choc de simplification</p>
 
   </section>
   <section>
     <h3 id="philosophie">Philosophie</h3>
 <ul>
-<li>Proposer des sources d&#39;amélioration continue opérationelles</li>
+<li>Proposer des sources d&#39;améliorations opérationelles en continu</li>
 <li>Les mettre en oeuvre</li>
 <li>En mesurer les effets</li>
 </ul>
-
-  </section>
-  <section>
-    <h3 id="premi-re-application">Première application</h3>
-<p>les déploiements</p>
 
   </section>
   <section>
@@ -1843,14 +1838,14 @@ progressive, valorisée en continu</li>
     <h3 id="pr-requis-r-les-leader-infra">Prérequis : Rôles : Leader Infra</h3>
 <p>Thibaut</p>
 <ul>
-<li>Conçoit de nouvelles méthodes</li>
+<li>Participe à la conception de nouvelles méthodes</li>
 <li>Met en oeuvre des solutions</li>
 <li>Garantit la bonne application des procédures</li>
 </ul>
 
   </section>
   <section>
-    <h2 id="pr-requis-r-les-equipe">Prérequis : Rôles : Equipe</h2>
+    <h3 id="pr-requis-r-les-equipe">Prérequis : Rôles : Equipe</h3>
 <p>Devs &amp; Ops</p>
 <ul>
 <li>Pas de distingo presta/agent mairie</li>
@@ -1893,7 +1888,7 @@ progressive, valorisée en continu</li>
 
   </section>
   <section>
-    <p><img src="img/start.gif"/></p>
+    <p><img src="img/start.gif" alt="Image de démarrage : START !"></p>
 
   </section>
   <section>
@@ -1903,15 +1898,15 @@ progressive, valorisée en continu</li>
 <li>Facilement documentable</li>
 <li>Très bon point de départ pour comprendre le fonctionnement d&#39;un Tomcat</li>
 <li>Gros potentiel d&#39;optimisation à moindres frais</li>
-<li>Ouvre la porte vers les pratiques DevOps</li>
+<li>Ouvre la porte vers des pratiques DevOps</li>
 </ul>
 
   </section>
   <section>
     <h3 id="kpi">KPI</h3>
 <p><i>&quot;A Key Performance Indicator is a measurable value that demonstrates
-how effectively a company is achieving key business objectives. Organizations
-use KPIs at multiple levels to evaluate their success at reaching targets.&quot;</i></p>
+how effectively a company is achieving key business objectives.&quot;</i></p>
+<p><i>&quot;Organizations use KPIs at multiple levels to evaluate their success at reaching targets.&quot;</i></p>
 
   </section>
   <section>
@@ -1926,7 +1921,7 @@ use KPIs at multiple levels to evaluate their success at reaching targets.&quot;
   </section>
   <section>
     <h3 id="construction-des-kpis">Construction des KPIs</h3>
-<p>Création d&#39;une table (psql) de load afin de produire les indicateurs.</p>
+<p>Création d&#39;une table (psql) afin de produire les indicateurs.</p>
 <pre><code>
 CREATE TABLE deploy_war_only  ( 
     id             int4 NULL,
@@ -1967,8 +1962,8 @@ update deploy_war_only
   <section>
     <h3 id="famille-d-applications">Famille d&#39;applications</h3>
 <p>Créer des familles d&#39;application pour mieux comprendre où part le temps :</p>
-<pre><code>ALTER TABLE "public"."deploy_war_only" 
-    ADD COLUMN "project_family" varchar(25) NULL;
+<pre><code>ALTER TABLE deploy_war_only
+    ADD COLUMN project_family varchar(25) NULL;
 
 update deploy_war_only
     set project_family = application;
@@ -1981,8 +1976,6 @@ update deploy_war_only
 <p>Personnes qui ont fait le plus de déploiements war-only à ce jour</p>
 <pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
 from deploy_war_only
-where assignee not in ('David MAJOREL', 'Melanie Gault',
-'dimitri fortin')
 group by assignee
 order by count(*) desc</code></pre>
 
@@ -1996,7 +1989,7 @@ alexandre FAULLE       43
   </section>
   <section>
     <h3 id="kpi-01-volume-total-de-d-ploiement-agent">KPI-01 : Volume total de déploiement /agent</h3>
-<p><img src="img/nb_deploy-war-total-by-agent.png"></img></p>
+<p><img src="img/nb_deploy-war-total-by-agent.png" alt="KPI-01 : Volume total de déploiement/agent"></p>
 
   </section>
   <section>
@@ -2017,39 +2010,34 @@ aggreg_time count
   </section>
   <section>
     <h3 id="kpi-02-distribution-des-temps-de-d-ploiement">KPI-02 : Distribution des temps de déploiement</h3>
-<p><img src="img/distribution_complexite_deploiements.png"/></p>
+<p><img src="img/distribution_complexite_deploiements.png" alt="KPI-02 : Distribution des temps de déploiement"></p>
 
   </section>
   <section>
     <h3 id="kpi-03-distribution-des-temps-appli">KPI-03 : Distribution des temps/appli</h3>
-<p>Nb. de deploiements avec temps (avec cut à 10)</p>
 <pre><code>select application, aggreg_time, count(aggreg_time)
 from deploy_war_only
 group by application, aggreg_time
-having count(*) > 10
+having count(*) &gt; 10
 order by application desc, count(*) desc</code></pre>
-  </section>
-  <section>
-    <h3 id="kpi-03-aggr-gat-par-appli-sirh-aggr-g-">KPI-03 : Aggrégat par appli (SIRH aggrégé)</h3>
-<pre>
-application     nb2     nb1
+<pre><code>application     nb2     nb1
 SI.RH           298     172
 SEAT             14      16
 Organigramme     17       0
 Missions SIALE    0      15
 Annuaire          0      11
 ADVERAD           0      12
-Actes Etat Cicil  0      12
-</pre>
+Actes Etat Cicil  0      12</code></pre>
+
   </section>
   <section>
     <h3 id="kpi-03-aggr-gat-par-appli-sirh-aggr-g-">KPI-03 : Aggrégat par appli (SIRH aggrégé)</h3>
-<p><img src = "img/distrib_par_appli-sirh-pourcentage.png"/></p>
+<p><img src="img/distrib_par_appli-sirh-pourcentage.png" alt="KPI-03 : Aggrégat par appli (SIRH aggrégé)"></p>
 
   </section>
   <section>
     <h3 id="pertinence-des-kpi">Pertinence des KPI</h3>
-<p>Réactions face à ces KPI.</p>
+<p>Réactions face à ces KPI</p>
 
   </section>
   <section>
@@ -2071,11 +2059,11 @@ suivre ces métriques en continu</p>
   </section>
   <section>
     <h3 id="de-la-mesure-la-strat-gie">De la mesure à la stratégie</h3>
-<p>Traduire les KPI en stratégie.</p>
+<p>Traduire les KPI en stratégies.</p>
 
   </section>
   <section>
-    <h3 id="strat-gies-possibles">Stratégies possibles</h3>
+    <h3 id="strat-gies">Stratégies</h3>
 <ul>
 <li>Uniformisation des performances des agents</li>
 <li>Réduction du temps passé/déploiement</li>
@@ -2085,7 +2073,7 @@ suivre ces métriques en continu</p>
 
   </section>
   <section>
-    <h2 id="objectif-1-0">Objectif 1.0</h2>
+    <h2 id="objectif-1-0-uniformisation">Objectif 1.0 : Uniformisation</h2>
 <p>Pour tous, les mêmes :</p>
 <ul>
 <li>pratiques</li>
@@ -2095,7 +2083,7 @@ suivre ces métriques en continu</p>
   </section>
   <section>
     <h3 id="constat-distribution-du-temps-agent">Constat : distribution du temps/agent</h3>
-<p><img src="img/stats_par_agent_2.png"/></p>
+<p><img src="img/distrib_par_appli-sirh-pourcentage.png" alt="Constat : distribution du temps/agent"></p>
 
   </section>
   <section>
@@ -2111,7 +2099,7 @@ suivre ces métriques en continu</p>
   <section>
     <h3 id="etablir-un-talon">Etablir un étalon</h3>
 <p>Avant de changer quoi que ce soit, nous avons besoin d&#39;une
-granularité plus fine sur la distribution du temps passé au sein d&#39;un
+granularité plus fine sur la distribution du temps passé au sein d&#39;un même
 déploiement, sur un projet fixé.</p>
 <p>Ce sera notre étalon.</p>
 
@@ -2145,18 +2133,18 @@ Suppression ancien war    5
 </pre>
   </section>
   <section>
-    <h3 id="m-trique-type">Métrique type</h3>
-<p><img src="img/exemple_profil_temps_deploiement_war.png"/></p>
+    <h3 id="m-triques-types">Métriques types</h3>
+<p><img src="img/exemple_profil_temps_deploiement_war.png" alt="Métrique type"></p>
 
   </section>
   <section>
     <h3 id="actuel-performances-disparates">Actuel : Performances disparates</h3>
-<p><img src="img/constat_avant_objectif_0.png"/></p>
+<p><img src="img/constat_avant_objectif_0.png" alt="Actuel : Performances disparates"></p>
 
   </section>
   <section>
     <h2 id="objectif-1-0-uniformit-">Objectif 1.0 : uniformité</h2>
-<p><img src="img/objectif_1.0.png"/></p>
+<p><img src="img/objectif_1.0.png" alt="Objectif 1.0 : uniformité"></p>
 
   </section>
   <section>
@@ -2179,53 +2167,30 @@ de performances remontés sur le déploiement étalon.</p>
   </section>
   <section>
     <h3 id="objectif-2-0">Objectif 2.0</h3>
-<p><img src="img/objectif_2.0.png"/></p>
+<p><img src="img/objectif_2.0.png" alt="Objectif 2.0"></p>
 
   </section>
   <section>
     <h3 id="objectif-2-1">Objectif 2.1</h3>
-<p><img src="img/objectif_2.1.png"/></p>
+<p><img src="img/objectif_2.1.png" alt="Objectif 2.1"></p>
 
   </section>
   <section>
     <h3 id="exemple-de-progression-partag-e">Exemple de Progression partagée</h3>
-<p><img src="img/objectif_roadmap.png"/></p>
+<p><img src="img/objectif_roadmap.png" alt="Exemple de Progression partagée"></p>
 
   </section>
   <section>
     <h3 id="la-suite">La suite</h3>
 <ul>
 <li>Les besoins d&#39;amélioration vont émerger de l&#39;équipe</li>
-<li>Généralisation de ce cycle (KPI/Analyse/Amélioration) à tous les types de déploiements</li>
+<li>Généralisation de ce cycle (KPI, Analyse, Amélioration et Stabilisation) à tous les types de déploiements</li>
 <li>La dynamique DevOps est lancée</li>
 </ul>
 
   </section>
   <section>
-    <p><img src="img/squad.gif"/></p>
-
-  </section>
-  <section>
-    <h3 id="poubelle">POUBELLE</h3>
-
-  </section>
-  <section>
-    <h3 id="questions-sur-cette-r-partition">Questions  sur cette répartition</h3>
-<ul>
-<li>Répartition actuelle et celle souhaitée à terme</li>
-<li>Stratégie ?</li>
-<li>Ressenti par rapport au volume, la répartition, la complexité, la charge</li>
-<li>Basculer les deploiements de 30&#39; en 15&#39;, on passe d&#39;un volume d&#39;heures de
-306 h à 193 h, soit un facteur 1.6.</li>
-</ul>
-
-  </section>
-  <section>
-    <h3 id="pistes-autour-de-si-rh">Pistes autour de SI.RH</h3>
-<ul>
-<li>Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois</li>
-<li>Complexité Organigramme et SI.RH différentes des autres applications notable</li>
-</ul>
+    <p><img src="img/squad.gif" alt="Equipe"></p>
 
   </section>
   <section>
