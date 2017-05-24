@@ -6,28 +6,21 @@ controls: true
 theme: sudodoki/reveal-cleaver-theme
 --
 
- Boot devops.
+ Déploiements
 
 ![Image de couverture](img/cover.jpg)
 
- Le choc de simplification.
-
+ Le choc de simplification
 
 --
 
 ### Philosophie
 
-* Proposer des sources d'amélioration continue opérationelles
+* Proposer des sources d'améliorations opérationelles en continu
 * Les mettre en oeuvre
 * En mesurer les effets
 
 --
-### Première application 
-
-les déploiements
-
---
-
 
 ### Constat
 
@@ -72,14 +65,14 @@ progressive, valorisée en continu
 
 Thibaut
 
-* Conçoit de nouvelles méthodes
+* Participe à la conception de nouvelles méthodes
 * Met en oeuvre des solutions
 * Garantit la bonne application des procédures
 
 
 --
 
-## Prérequis : Rôles : Equipe
+### Prérequis : Rôles : Equipe
 
 Devs & Ops
 
@@ -133,15 +126,16 @@ Sans cela, le chantier s'arrête là.
 * Facilement documentable
 * Très bon point de départ pour comprendre le fonctionnement d'un Tomcat
 * Gros potentiel d'optimisation à moindres frais
-* Ouvre la porte vers les pratiques DevOps
+* Ouvre la porte vers des pratiques DevOps
 
 --
 
 ### KPI
 
 <i>"A Key Performance Indicator is a measurable value that demonstrates
-how effectively a company is achieving key business objectives. Organizations
-use KPIs at multiple levels to evaluate their success at reaching targets."</i>
+how effectively a company is achieving key business objectives."</i>
+
+<i>"Organizations use KPIs at multiple levels to evaluate their success at reaching targets."</i>
 
 
 --
@@ -157,7 +151,7 @@ use KPIs at multiple levels to evaluate their success at reaching targets."</i>
 
 ### Construction des KPIs
 
-Création d'une table (psql) de load afin de produire les indicateurs.
+Création d'une table (psql) afin de produire les indicateurs.
 
 <pre><code>
 CREATE TABLE deploy_war_only  ( 
@@ -209,8 +203,8 @@ update deploy_war_only
 
 Créer des familles d'application pour mieux comprendre où part le temps :
 
-<pre><code>ALTER TABLE "public"."deploy_war_only" 
-    ADD COLUMN "project_family" varchar(25) NULL;
+<pre><code>ALTER TABLE deploy_war_only
+    ADD COLUMN project_family varchar(25) NULL;
 
 update deploy_war_only
     set project_family = application;
@@ -226,8 +220,6 @@ Personnes qui ont fait le plus de déploiements war-only à ce jour
 
 <pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
 from deploy_war_only
-where assignee not in ('David MAJOREL', 'Melanie Gault',
-'dimitri fortin')
 group by assignee
 order by count(*) desc</code></pre>
 
@@ -273,19 +265,16 @@ aggreg_time count
 
 ### KPI-03 : Distribution des temps/appli
 
-Nb. de deploiements avec temps (avec cut à 10)
-
-<pre><code>select application, aggreg_time, count(aggreg_time)
+```
+select application, aggreg_time, count(aggreg_time)
 from deploy_war_only
 group by application, aggreg_time
 having count(*) > 10
-order by application desc, count(*) desc</code></pre>
+order by application desc, count(*) desc
+```
 
---
 
-### KPI-03 : Aggrégat par appli (SIRH aggrégé)
-
-<pre>
+```
 application     nb2     nb1
 SI.RH           298     172
 SEAT             14      16
@@ -294,7 +283,8 @@ Missions SIALE    0      15
 Annuaire          0      11
 ADVERAD           0      12
 Actes Etat Cicil  0      12
-</pre>
+```
+
 
 --
 
@@ -306,7 +296,7 @@ Actes Etat Cicil  0      12
 
 ### Pertinence des KPI
 
-Réactions face à ces KPI.
+Réactions face à ces KPI
 
 --
 
@@ -329,12 +319,12 @@ suivre ces métriques en continu
 
 ### De la mesure à la stratégie
 
-Traduire les KPI en stratégie.
+Traduire les KPI en stratégies.
 
 
 --
 
-### Stratégies possibles
+### Stratégies
 
 * Uniformisation des performances des agents
 * Réduction du temps passé/déploiement
@@ -343,7 +333,7 @@ Traduire les KPI en stratégie.
 
 --
 
-## Objectif 1.0
+## Objectif 1.0 : Uniformisation
 
 Pour tous, les mêmes :
 
@@ -370,7 +360,7 @@ Pour tous, les mêmes :
 ### Etablir un étalon
 
 Avant de changer quoi que ce soit, nous avons besoin d'une
-granularité plus fine sur la distribution du temps passé au sein d'un
+granularité plus fine sur la distribution du temps passé au sein d'un même
 déploiement, sur un projet fixé.
 
 Ce sera notre étalon.
@@ -409,7 +399,7 @@ Suppression ancien war    5
 
 --
 
-### Métrique type
+### Métriques types
 
 ![Métrique type](img/exemple_profil_temps_deploiement_war.png)
 
@@ -469,29 +459,9 @@ de performances remontés sur le déploiement étalon.
 ### La suite
 
 * Les besoins d'amélioration vont émerger de l'équipe
-* Généralisation de ce cycle (KPI/Analyse/Amélioration) à tous les types de déploiements
+* Généralisation de ce cycle (KPI, Analyse, Amélioration et Stabilisation) à tous les types de déploiements
 * La dynamique DevOps est lancée
 
 --
 
 ![Equipe](img/squad.gif)
-
---
-### POUBELLE
-
---
-
-### Questions  sur cette répartition
-
-* Répartition actuelle et celle souhaitée à terme
-* Stratégie ?
-* Ressenti par rapport au volume, la répartition, la complexité, la charge
-* Basculer les deploiements de 30' en 15', on passe d'un volume d'heures de
-306 h à 193 h, soit un facteur 1.6. 
-
---
-
-### Pistes autour de SI.RH
-
-* Diminution drastique des déploiements en mode maintenance : 1 déploiement/mois
-* Complexité Organigramme et SI.RH différentes des autres applications notable
