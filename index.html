@@ -1922,8 +1922,7 @@ how effectively a company is achieving key business objectives.&quot;</i></p>
   <section>
     <h3 id="construction-des-kpis">Construction des KPIs</h3>
 <p>Création d&#39;une table (psql) afin de produire les indicateurs.</p>
-<pre><code>
-CREATE TABLE deploy_war_only  ( 
+<pre><code>CREATE TABLE deploy_war_only  ( 
     id             int4 NULL,
     prio           varchar NULL,
     assignee       varchar NULL,
@@ -1931,10 +1930,12 @@ CREATE TABLE deploy_war_only  (
     application    varchar NULL,
     aggreg_time    int4 NULL
     )</code></pre>
+
   </section>
   <section>
     <h3 id="chargement-du-rapport-redmine-csv-">Chargement du rapport redmine (csv)</h3>
-<pre><code>copy deploy_war_only from '/tmp/issues.csv' DELIMITER ';' CSV;</code></pre>
+<pre><code>copy deploy_war_only from &#39;/tmp/issues.csv&#39; DELIMITER &#39;;&#39; CSV;</code></pre>
+
   </section>
   <section>
     <h3 id="tranches-de-temps">tranches de temps</h3>
@@ -1951,13 +1952,14 @@ CREATE TABLE deploy_war_only  (
     <h3 id="tranches-de-temps">tranches de temps</h3>
 <p>Mise à jour de la table :</p>
 <pre><code>update deploy_war_only
-set aggreg_time=4 where (temps > 1);
+set aggreg_time=4 where (temps &gt; 1);
 update deploy_war_only
-    set aggreg_time=3 where (temps > 0.5 and temps <= 1);
+    set aggreg_time=3 where (temps &gt; 0.5 and temps &lt;= 1);
 update deploy_war_only
-    set aggreg_time=2 where (temps > 0.25 and temps <= 0.5);
+    set aggreg_time=2 where (temps &gt; 0.25 and temps &lt;= 0.5);
 update deploy_war_only
-    set aggreg_time=1 where (temps <= 0.25)</code></pre>
+    set aggreg_time=1 where (temps &lt;= 0.25)</code></pre>
+
   </section>
   <section>
     <h3 id="famille-d-applications">Famille d&#39;applications</h3>
@@ -1968,24 +1970,23 @@ update deploy_war_only
 update deploy_war_only
     set project_family = application;
 update deploy_war_only
-    set project_family = 'SIRH'
-    where application like 'SIRH%';</code></pre>
+    set project_family = &#39;SIRH&#39;
+    where application like &#39;SIRH%&#39;;</code></pre>
+
   </section>
   <section>
     <h3 id="kpi-01-les-plus-gros-d-ployeurs">KPI-01 : Les plus gros déployeurs</h3>
 <p>Personnes qui ont fait le plus de déploiements war-only à ce jour</p>
-<pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
+<pre><code>select assignee &quot;Agent&quot;, count(*) &quot;Nb. Déploiements&quot;
 from deploy_war_only
 group by assignee
 order by count(*) desc</code></pre>
-
-<pre>
-Baptiste Jammet        292
+<pre><code>Baptiste Jammet        292
 bruno quinquis         272
 ioana draghici         150
 Thibaut De Casabianca  75
-alexandre FAULLE       43
-</pre>
+alexandre FAULLE       43</code></pre>
+
   </section>
   <section>
     <h3 id="kpi-01-volume-total-de-d-ploiement-agent">KPI-01 : Volume total de déploiement /agent</h3>
@@ -1994,19 +1995,16 @@ alexandre FAULLE       43
   </section>
   <section>
     <h3 id="kpi-02-distribution-des-temps-de-d-ploiement">KPI-02 : Distribution des temps de déploiement</h3>
-<pre><code>
-select aggreg_time, count(aggreg_time)
+<pre><code>select aggreg_time, count(aggreg_time)
 from deploy_war_only
 group by aggreg_time
 order by aggreg_time desc</code></pre>
-
-<pre>
-aggreg_time count
+<pre><code>aggreg_time count
 4             25
 3             72
 2             453
-1             322
-</pre>
+1             322</code></pre>
+
   </section>
   <section>
     <h3 id="kpi-02-distribution-des-temps-de-d-ploiement">KPI-02 : Distribution des temps de déploiement</h3>
@@ -2123,14 +2121,13 @@ déploiement, sur un projet fixé.</p>
   <section>
     <h3 id="exemple-de-m-trique-sur-un-d-ploiement">Exemple de métrique sur un déploiement</h3>
 <p>appock :</p>
-<pre>
-Actions                   Temps (minutes)
+<pre><code>Actions                   Temps (minutes)
 Download du war           8
 Upload du war tu Tomcat   2
 Test(s) reverse proxy     2
 Test Appli Up             3
-Suppression ancien war    5
-</pre>
+Suppression ancien war    5</code></pre>
+
   </section>
   <section>
     <h3 id="m-triques-types">Métriques types</h3>
