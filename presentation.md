@@ -8,7 +8,7 @@ theme: sudodoki/reveal-cleaver-theme
 
  Boot devops.
 
-<img src="img/cover.jpg"/>
+![Image de couverture](img/cover.jpg)
 
  Le choc de simplification.
 
@@ -122,7 +122,7 @@ Sans cela, le chantier s'arrête là.
 
 --
 
-<img src="img/start.gif"/>
+![Image de démarrage : START !](img/start.gif)
 
 
 --
@@ -243,7 +243,7 @@ alexandre FAULLE       43
 
 ### KPI-01 : Volume total de déploiement /agent
 
-<img src="img/nb_deploy-war-total-by-agent.png"></img>
+![KPI-01 : Volume total de déploiement/agent](img/nb_deploy-war-total-by-agent.png)
 
 --
 
@@ -267,7 +267,7 @@ aggreg_time count
 
 ### KPI-02 : Distribution des temps de déploiement
 
-<img src="img/distribution_complexite_deploiements.png"/>
+![KPI-02 : Distribution des temps de déploiement](img/distribution_complexite_deploiements.png)
 
 --
 
@@ -300,7 +300,7 @@ Actes Etat Cicil  0      12
 
 ### KPI-03 : Aggrégat par appli (SIRH aggrégé)
 
-<img src = "img/distrib_par_appli-sirh-pourcentage.png"/>
+![KPI-03 : Aggrégat par appli (SIRH aggrégé)](img/distrib_par_appli-sirh-pourcentage.png)
 
 --
 
@@ -354,7 +354,8 @@ Pour tous, les mêmes :
 
 ### Constat : distribution du temps/agent
 
-<img src="img/stats_par_agent_2.png"/>
+![Constat : distribution du temps/agent](img/distrib_par_appli-sirh-pourcentage.png)
+
 --
 
 ### Explications
@@ -410,22 +411,20 @@ Suppression ancien war    5
 
 ### Métrique type
 
-<img src="img/exemple_profil_temps_deploiement_war.png"/>
+![Métrique type](img/exemple_profil_temps_deploiement_war.png)
 
 --
 
 ### Actuel : Performances disparates
 
-
-
-<img src="img/constat_avant_objectif_0.png"/>
+![Actuel : Performances disparates](img/constat_avant_objectif_0.png)
 
 
 --
 ## Objectif 1.0 : uniformité
 
 
-<img src="img/objectif_1.0.png"/>
+![Objectif 1.0 : uniformité](img/objectif_1.0.png)
 
 --
 
@@ -452,18 +451,18 @@ de performances remontés sur le déploiement étalon.
 
 ### Objectif 2.0
 
-<img src="img/objectif_2.0.png"/>
+![Objectif 2.0](img/objectif_2.0.png)
+
 
 --
 ### Objectif 2.1
 
-<img src="img/objectif_2.1.png"/>
+![Objectif 2.1](img/objectif_2.1.png)
 
 --
 ### Exemple de Progression partagée
 
-<img src="img/objectif_roadmap.png"/>
-
+![Exemple de Progression partagée](img/objectif_roadmap.png)
 
 --
 
@@ -475,8 +474,7 @@ de performances remontés sur le déploiement étalon.
 
 --
 
-
-<img src="img/squad.gif"/>
+![Equipe](img/squad.gif)
 
 --
 ### POUBELLE
