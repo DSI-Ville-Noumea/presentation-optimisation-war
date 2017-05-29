@@ -52,7 +52,7 @@ Adrien
 
 
 * Leader du projet
-* Visu et partage de la trajectoire
+* Vision de la trajectoire
 * Insuffle la philosophie DevOps (organisation, outils)
 * Challenge les parties prenantes sur une montée en compétences
 progressive, valorisée en continu
@@ -76,7 +76,7 @@ Thibaut
 
 Devs & Ops
 
-* Pas de distingo presta/agent mairie
+* Pas de distingo prestataire/agent mairie
 * Application éclairée des procédures développées
 * Ouverture d'esprit sur l'innovation
 * Nécessité et volonté de comprendre ce qui est fait et pourquoi
@@ -125,7 +125,7 @@ Sans cela, le chantier s'arrête là.
 * Action très simple et atomique
 * Facilement documentable
 * Très bon point de départ pour comprendre le fonctionnement d'un Tomcat
-* Gros potentiel d'optimisation à moindres frais
+* Gros potentiel d'optimisation à moindre frais
 * Ouvre la porte vers des pratiques DevOps
 
 --
@@ -153,7 +153,7 @@ how effectively a company is achieving key business objectives."</i>
 
 Création d'une table (psql) afin de produire les indicateurs.
 
-<pre><code>
+```
 CREATE TABLE deploy_war_only  ( 
     id             int4 NULL,
     prio           varchar NULL,
@@ -161,17 +161,20 @@ CREATE TABLE deploy_war_only  (
     temps          numeric NULL,
     application    varchar NULL,
     aggreg_time    int4 NULL
-    )</code></pre>
+    )
+```
 
 --
 
 ### Chargement du rapport redmine (csv)
 
-<pre><code>copy deploy_war_only from '/tmp/issues.csv' DELIMITER ';' CSV;</code></pre>
+```
+copy deploy_war_only from '/tmp/issues.csv' DELIMITER ';' CSV;
+```
 
 --
 
-### tranches de temps
+### Tranches de temps
 
 aggreg_time
 
@@ -183,19 +186,20 @@ aggreg_time
 
 --
 
-### tranches de temps
+### Tranches de temps
 
 Mise à jour de la table :
 
-
-<pre><code>update deploy_war_only
+```
+update deploy_war_only
 set aggreg_time=4 where (temps > 1);
 update deploy_war_only
     set aggreg_time=3 where (temps > 0.5 and temps <= 1);
 update deploy_war_only
     set aggreg_time=2 where (temps > 0.25 and temps <= 0.5);
 update deploy_war_only
-    set aggreg_time=1 where (temps <= 0.25)</code></pre>
+    set aggreg_time=1 where (temps <= 0.25)
+```
 
 --
 
@@ -203,14 +207,16 @@ update deploy_war_only
 
 Créer des familles d'application pour mieux comprendre où part le temps :
 
-<pre><code>ALTER TABLE deploy_war_only
+```
+ALTER TABLE deploy_war_only
     ADD COLUMN project_family varchar(25) NULL;
 
 update deploy_war_only
     set project_family = application;
 update deploy_war_only
     set project_family = 'SIRH'
-    where application like 'SIRH%';</code></pre>
+    where application like 'SIRH%';
+```
 
 --
 
@@ -218,18 +224,20 @@ update deploy_war_only
 
 Personnes qui ont fait le plus de déploiements war-only à ce jour
 
-<pre><code>select assignee "Agent", count(*) "Nb. Déploiements"
+```
+select assignee "Agent", count(*) "Nb. Déploiements"
 from deploy_war_only
 group by assignee
-order by count(*) desc</code></pre>
+order by count(*) desc
+```
 
-<pre>
+```
 Baptiste Jammet        292
 bruno quinquis         272
 ioana draghici         150
 Thibaut De Casabianca  75
 alexandre FAULLE       43
-</pre>
+```
 
 --
 
@@ -241,19 +249,20 @@ alexandre FAULLE       43
 
 ### KPI-02 : Distribution des temps de déploiement
 
-<pre><code>
+```
 select aggreg_time, count(aggreg_time)
 from deploy_war_only
 group by aggreg_time
-order by aggreg_time desc</code></pre>
+order by aggreg_time desc
+```
 
-<pre>
+```
 aggreg_time count
 4             25
 3             72
 2             453
 1             322
-</pre>
+```
 
 --
 
@@ -388,14 +397,14 @@ Commencer par une appli simple (pas SI.RH) : Appock/Shinigami ?
 
 appock :
 
-<pre>
+```
 Actions                   Temps (minutes)
 Download du war           8
 Upload du war tu Tomcat   2
 Test(s) reverse proxy     2
 Test Appli Up             3
 Suppression ancien war    5
-</pre>
+```
 
 --
 
@@ -405,7 +414,7 @@ Suppression ancien war    5
 
 --
 
-### Actuel : Performances disparates
+### Actuellement : Performances disparates
 
 ![Actuel : Performances disparates](img/constat_avant_objectif_0.png)
 
@@ -464,4 +473,4 @@ de performances remontés sur le déploiement étalon.
 
 --
 
-![Equipe](img/squad.gif)
+![Equipe](img/Quotefancy-607-3840x2160.jpg)
