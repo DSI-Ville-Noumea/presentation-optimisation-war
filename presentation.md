@@ -473,4 +473,4 @@ de performances remontés sur le déploiement étalon.
 
 --
 
-![Equipe](img/squad.gif)
+![Equipe](img/Quotefancy-607-3840x2160.jpg)
