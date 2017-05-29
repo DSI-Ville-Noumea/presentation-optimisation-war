@@ -52,7 +52,7 @@ Adrien
 
 
 * Leader du projet
-* Visu et partage de la trajectoire
+* Vision de la trajectoire
 * Insuffle la philosophie DevOps (organisation, outils)
 * Challenge les parties prenantes sur une montée en compétences
 progressive, valorisée en continu
@@ -76,7 +76,7 @@ Thibaut
 
 Devs & Ops
 
-* Pas de distingo presta/agent mairie
+* Pas de distingo prestataire/agent mairie
 * Application éclairée des procédures développées
 * Ouverture d'esprit sur l'innovation
 * Nécessité et volonté de comprendre ce qui est fait et pourquoi
@@ -125,7 +125,7 @@ Sans cela, le chantier s'arrête là.
 * Action très simple et atomique
 * Facilement documentable
 * Très bon point de départ pour comprendre le fonctionnement d'un Tomcat
-* Gros potentiel d'optimisation à moindres frais
+* Gros potentiel d'optimisation à moindre frais
 * Ouvre la porte vers des pratiques DevOps
 
 --
@@ -174,7 +174,7 @@ copy deploy_war_only from '/tmp/issues.csv' DELIMITER ';' CSV;
 
 --
 
-### tranches de temps
+### Tranches de temps
 
 aggreg_time
 
@@ -186,7 +186,7 @@ aggreg_time
 
 --
 
-### tranches de temps
+### Tranches de temps
 
 Mise à jour de la table :
 
@@ -414,7 +414,7 @@ Suppression ancien war    5
 
 --
 
-### Actuel : Performances disparates
+### Actuellement : Performances disparates
 
 ![Actuel : Performances disparates](img/constat_avant_objectif_0.png)
 
