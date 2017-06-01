@@ -469,6 +469,7 @@ de performances remontés sur le déploiement étalon.
 
 * Les besoins d'amélioration vont émerger de l'équipe
 * Généralisation de ce cycle (KPI, Analyse, Amélioration et Stabilisation) à tous les types de déploiements
+* La "data culture" est initiée
 * La dynamique DevOps est lancée
 
 --
