@@ -109,7 +109,7 @@ Devs & Ops
 On considère ici que :
 
 * Les deux leaders ont légitimité
-* L'équipe est impliquée
+* L'équipe est engagée
 
 Sans cela, le chantier s'arrête là.
 
@@ -353,7 +353,7 @@ Pour tous, les mêmes :
 
 ### Constat : distribution du temps/agent
 
-![Constat : distribution du temps/agent](img/distrib_par_appli-sirh-pourcentage.png)
+![Constat : distribution du temps/agent](img/stats_par_agent_1.png)
 
 --
 
